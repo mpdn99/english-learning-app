@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
 
-const FlatButton = ({title, pressed, color}) => {
+const FlatButton = ({title, pressed, color, long}) => {
     return (
         <TouchableOpacity
-            style={[styles.flatbutton, {backgroundColor: color}]}
+            style={[styles.flatbutton, {backgroundColor: color, width: long}]}
             onPress={() => Alert.alert(pressed)}
         >
             <View style={{flexDirection: 'column', flexShrink: 1}}>
-            <Text style={{color: 'white'}}>{title}</Text>
+            <Text style={{color: 'white', justifyContent:'center'}}>{title}</Text>
             </View>
         </TouchableOpacity>
     )
