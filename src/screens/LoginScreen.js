@@ -34,7 +34,7 @@ const LoginScreen = () => {
                         title='SIGN IN'
                         color='blue'
                         pressed='SIGN IN'
-                        long={150}
+                        long={140}
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
