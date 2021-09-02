@@ -75,7 +75,7 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen
             name="Login"
-            component={LoginScreen}
+            component={SignInScreen}
             options={{
                 tabBarVisible: 'false',
                 tabBarLabel: 'Login',

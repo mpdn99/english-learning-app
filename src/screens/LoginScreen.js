@@ -38,13 +38,15 @@ const LoginScreen = () => {
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
-                        <Checkbox.Android status={isSelected ? 'checked' : 'unchecked'}
-                                    onPress={() => {
-                                      setSelection(!isSelected);
-                                    }}
-                                    color={'#FF8181'}
-                        />
-                        <Text style={{}}>Remember</Text>
+                            <View style={{marginTop: -8}}>
+                                <Checkbox.Android status={isSelected ? 'checked' : 'unchecked'}
+                                            onPress={() => {
+                                            setSelection(!isSelected);
+                                            }}
+                                            color={'#FF8181'}
+                                />
+                            </View>
+                            <Text style={{}}>Remember</Text>
                         </View>
                         <Text>Forgot Password</Text>
                     </View>
