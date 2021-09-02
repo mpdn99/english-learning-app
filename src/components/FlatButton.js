@@ -4,11 +4,18 @@ import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-na
 const FlatButton = ({title, pressed, color, long}) => {
     return (
         <TouchableOpacity
-            style={[styles.flatbutton, {backgroundColor: color, width: long}]}
+            style={[styles.flatbutton, {backgroundColor: color, paddingHorizontal: long}]}
             onPress={() => Alert.alert(pressed)}
         >
-            <View style={{flexDirection: 'column', flexShrink: 1}}>
-            <Text style={{color: 'white', justifyContent:'center'}}>{title}</Text>
+            <View style={{
+                flexDirection: 'column',
+                flexShrink: 1,
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignItems: 'center',
+                alignContent: 'center'
+                }}>
+            <Text style={{color: 'white'}}>{title}</Text>
             </View>
         </TouchableOpacity>
     )
