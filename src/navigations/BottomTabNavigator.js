@@ -8,7 +8,13 @@ import TestScreen from '../screens/TestScreen';
 
 
 import ProfileScreen from '../screens/ProfileScreen';
+<<<<<<< HEAD
 
+=======
+import AudioplaylistScreen from '../screens/AudioplaylistScreen';
+import TestQuizzScreen from '../screens/TestQuizzScreen';
+import LoginScreen from '../screens/LoginScreen';
+>>>>>>> ad6d18ade3573c01c8666f1d2e1f1b3feb5a6a9b
 
 const Tab = createBottomTabNavigator();
 
@@ -61,7 +67,7 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen
             name="Profile"
-            component={ProfileScreen}
+            component={TestQuizzScreen}
             options={{
                 tabBarVisible: 'false',
                 tabBarLabel: 'Profile',
@@ -69,7 +75,17 @@ const BottomTabNavigator = () => {
                 <MaterialIcons name="person" size={26} color={color} />
                 ),
             }}
-            
+            />
+            <Tab.Screen
+            name="Login"
+            component={SignInScreen}
+            options={{
+                tabBarVisible: 'false',
+                tabBarLabel: 'Login',
+                tabBarIcon: ({color}) => (
+                <MaterialIcons name="person" size={26} color={color} />
+                ),
+            }}
             />
         </Tab.Navigator>
     )

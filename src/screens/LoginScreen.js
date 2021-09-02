@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, Button, Alert, SafeAreaView} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, Button, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
+import { Checkbox } from 'react-native-paper';
 
 const LoginScreen = () => {
 
@@ -11,7 +12,7 @@ const LoginScreen = () => {
     const [isSelected, setSelection] = React.useState(false); //checkbox remember
     
     return (
-        <SafeAreaView style={styles.scrollView} showsVerticalScrollIndicator={false}>
+        <View style={styles.scrollView} showsVerticalScrollIndicator={false}>
             <View style={styles.topView}></View>
             <View style={styles.bottomView}>
                 <Text style={styles.welcome}>Welcome</Text>
@@ -30,18 +31,22 @@ const LoginScreen = () => {
                         placeholder="Password"
                     />
                     <FlatButton
-                        text='SIGN IN'
+                        title='SIGN IN'
                         color='blue'
-                        onPress={() => Alert.alert('SIGN')}
+                        pressed='SIGN IN'
+                        long={140}
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
-                        <CheckBox
-                            value={isSelected}
-                            onValueChange={setSelection}
-                            style={{marginTop: -5}}
-                        />
-                        <Text>Remember</Text>
+                            <View style={{marginTop: -8}}>
+                                <Checkbox.Android status={isSelected ? 'checked' : 'unchecked'}
+                                            onPress={() => {
+                                            setSelection(!isSelected);
+                                            }}
+                                            color={'#FF8181'}
+                                />
+                            </View>
+                            <Text style={{}}>Remember</Text>
                         </View>
                         <Text>Forgot Password</Text>
                     </View>
@@ -49,19 +54,19 @@ const LoginScreen = () => {
                 <Text style={{alignSelf: 'center', marginTop: -20}}>Or</Text>
                 <View style={styles.button}>
                     <FlatButton
-                        text='Sign in with GOOGLE'
+                        title='Sign in with GOOGLE'
                         color='red'
-                        onPress={() => Alert.alert('GG')}
+                        pressed='GG'
                     />
                     <View style={{width: Dimensions.get('window').width*1/14}}></View>
                     <FlatButton
-                    text='Sign in with FACEBOOK'
-                    color='blue'
-                    onPress={() => Alert.alert('FB')}
+                        title='Sign in with FACEBOOK'
+                        color='blue'
+                        pressed='FB'
                     />
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 
@@ -69,6 +74,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create ({
     scrollView: {
         flex: 1,
+        backgroundColor: 'white'
     },
     topView: {
         flex: 1,

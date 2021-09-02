@@ -39,23 +39,24 @@ const SignInScreen = () => {
                         placeholder="Confirm Password"
                     />
                     <FlatButton
-                        text='SIGN UP'
+                        title='SIGN UP'
                         color='blue'
-                        onPress={() => Alert.alert('SIGN')}
+                        pressed='succesful'
+                        long={135}
                     />
                 </View>
                 <Text style={{alignSelf: 'center', marginTop: 20}}>Or</Text>
                 <View style={styles.button}>
                     <FlatButton
-                        text='Sign up with GOOGLE'
+                        title='Sign up with GOOGLE'
                         color='red'
-                        onPress={() => Alert.alert('GG sign up')}
+                        pressed='GG sign up'
                     />
                     <View style={{width: Dimensions.get('window').width*1/30}}></View>
                     <FlatButton
-                    text='Sign up with FACEBOOK'
-                    color='blue'
-                    onPress={() => Alert.alert('FB sign up')}
+                        title='Sign up with FACEBOOK'
+                        color='blue'
+                        pressed='FB sign up'
                     />
                 </View>
             </View>

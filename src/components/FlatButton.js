@@ -1,43 +1,38 @@
-import React from 'react';
-import {
-    StyleSheet,
-    TouchableOpacity,
-    Text,
-    View,
-    Alert,
-    Dimensions
-} from 'react-native';
+import React from 'react'
+import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
 
-const FlatButton = props => {
-    const styleForButton = (
-        <View style={[styles.button, {backgroundColor: props.color}]}>
-            <Text style={styles.buttontext}>
-                {props.text}
-            </Text>
-        </View>
-    );
+const FlatButton = ({title, pressed, color, long}) => {
     return (
-        <TouchableOpacity onPress={props.onPress}>
-            {styleForButton}
+        <TouchableOpacity
+            style={[styles.flatbutton, {backgroundColor: color, paddingHorizontal: long}]}
+            onPress={() => Alert.alert(pressed)}
+        >
+            <View style={{
+                flexDirection: 'column',
+                flexShrink: 1,
+                justifyContent: 'center',
+                alignSelf: 'center',
+                alignItems: 'center',
+                alignContent: 'center'
+                }}>
+            <Text style={{color: 'white'}}>{title}</Text>
+            </View>
         </TouchableOpacity>
-    );
-};
+    )
+}
+
+export default FlatButton
 
 const styles = StyleSheet.create({
-    button: {
-        flex: 1,
+    flatbutton: {
+        height: 40,
+        alignSelf:'center',
+        alignItems:'center',
+        flexDirection:'row',
         borderRadius: 10,
+        padding: 15,
+        margin: 10,
         paddingVertical: 10,
-        paddingHorizontal: 10,
-        justifyContent: 'center',
-        marginTop: 10,
-    },
-    buttontext:{
-        color: 'white',
-        fontWeight: 'bold',
-        fontSize: 15,
-        textAlign: 'center'
-    }
-});
 
-export default FlatButton;
+    }
+})
