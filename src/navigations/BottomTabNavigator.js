@@ -8,13 +8,6 @@ import TestScreen from '../screens/TestScreen';
 
 
 import ProfileScreen from '../screens/ProfileScreen';
-<<<<<<< HEAD
-
-=======
-import AudioplaylistScreen from '../screens/AudioplaylistScreen';
-import TestQuizzScreen from '../screens/TestQuizzScreen';
-import LoginScreen from '../screens/LoginScreen';
->>>>>>> ad6d18ade3573c01c8666f1d2e1f1b3feb5a6a9b
 
 const Tab = createBottomTabNavigator();
 
