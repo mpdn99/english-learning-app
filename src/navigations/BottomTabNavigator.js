@@ -6,11 +6,9 @@ import HomeScreen from '../screens/HomeScreen';
 import CourseScreen from '../screens/CourseScreen';
 import TestScreen from '../screens/TestScreen';
 
-import SignInScreen from '../screens/SignInScreen';
-import ReadingScreen from '../screens/ReadingScreen';
+
 import ProfileScreen from '../screens/ProfileScreen';
-import AudioplaylistScreen from '../screens/AudioplaylistScreen';
-import TestQuizzScreen from '../screens/TestQuizzScreen';
+
 
 const Tab = createBottomTabNavigator();
 
