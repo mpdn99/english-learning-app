@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView ,StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, Button, Alert} from 'react-native';
+import {SafeAreaView ,StyleSheet, View, Text, ScrollView, Dimensions, TextInput, Button, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
 

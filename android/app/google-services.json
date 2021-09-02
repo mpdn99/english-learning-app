@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "980417164949",
+    "project_id": "english-learning-app-190db",
+    "storage_bucket": "english-learning-app-190db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:980417164949:android:00f4bdbcbe9024908bcd9c",
+        "android_client_info": {
+          "package_name": "com.englishlearningapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "980417164949-o471tkli4hnbt1b1hiq6d4vp2p790tht.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.englishlearningapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "980417164949-ogqnuft06b56bpbk8dmj6nsgjjd5bk0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-Ee03W-NToMrOR_cPRMAqBul36ucjsCs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "980417164949-ogqnuft06b56bpbk8dmj6nsgjjd5bk0u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView ,StyleSheet, View, Text, Dimensions, CheckBox, Button, Alert} from 'react-native';
+import {SafeAreaView ,StyleSheet, View, Text, Dimensions, Button, Alert} from 'react-native';
 import V2ReturnTestScreen from '../components/V2ReturnTestScreen';
 import PreviousNextButton from '../components/PreviousNextButton';
 import { Checkbox } from 'react-native-paper';
