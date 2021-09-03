@@ -1,18 +1,19 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import auth from '@react-native-firebase/auth';
 
-
-const SettingAction = ({navigation, name, screen}) => {
+const SignOutButton = () => {
     
-    const goTo = () => {
-        navigation.navigate(screen)
+    const LogOut = () => {
+        auth()
+        .signOut()
     }
 
     return (
-        <TouchableOpacity onPress={goTo}>
+        <TouchableOpacity onPress={LogOut}>
             <View style={styles.viewform}>
-                <Text style={styles.topText}>{name}</Text>
+                <Text style={styles.topText}>Sign out</Text>
                 <MaterialIcons name='chevron-right' size={40} color='gray'/>
             </View>
         </TouchableOpacity>
@@ -34,4 +35,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default SettingAction;
+export default SignOutButton;

@@ -2,6 +2,8 @@ import React from 'react';
 import {StyleSheet, View, Text, Dimensions, SafeAreaView} from 'react-native';
 import ReturnProfileScreen from './ReturnProfileScreen';
 import SettingAction from './SettingAction';
+import auth from '@react-native-firebase/auth';
+import SignOutButton from './SignOutButton';
 
 const SettingScreen = ({navigation}) => {
   return (
@@ -14,7 +16,7 @@ const SettingScreen = ({navigation}) => {
             <Text style={styles.partDivide}>Account Settings</Text>
             <SettingAction name='Account Security'/>
             <SettingAction name='Learning Reminder'/>
-            <SettingAction name='Sign out'/>
+            <SignOutButton/>
             <Text style={styles.partDivide}>Suppport</Text>
             <SettingAction name='About'/>
             <SettingAction name='FAQ'/>
