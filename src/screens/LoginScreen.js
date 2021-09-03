@@ -34,7 +34,7 @@ const LoginScreen = () => {
                         title='SIGN IN'
                         color='blue'
                         pressed='SIGN IN'
-                        long={140}
+                        long={100}
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
@@ -58,7 +58,7 @@ const LoginScreen = () => {
                         color='red'
                         pressed='GG'
                     />
-                    <View style={{width: Dimensions.get('window').width*1/14}}></View>
+                    <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
                         color='blue'
