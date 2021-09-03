@@ -80,15 +80,12 @@ const LoginScreen = ({navigation}) => {
                     />
                     <FlatButton
                         title='SIGN IN'
-<<<<<<< HEAD
                         color='blue'
                         onPress={SignInWithMail}
                         long={140}
-=======
                         color='#6360FF'
                         pressed='SIGN IN'
                         long={100}
->>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
@@ -110,24 +107,18 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.button}>
                     <FlatButton
                         title='Sign in with GOOGLE'
-<<<<<<< HEAD
                         color='red'
                         onPress={SignInWithGoogle}
-=======
                         color='#FF8181'
                         pressed='GG'
->>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
                     />
                     <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
-<<<<<<< HEAD
                         color='blue'
                         onPress={SignInWithFacebook}
-=======
                         color='#6360FF'
                         pressed='FB'
->>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
                     />
                 </View>
             </View>

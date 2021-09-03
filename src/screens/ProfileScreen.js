@@ -51,13 +51,9 @@ const ProfileScreen = ({navigation}) => {
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>Courses</Text>
           <Text style={{fontSize: 14, fontWeight: 'bold', color: 'gray'}}>Total 6</Text>
         </View>
-<<<<<<< HEAD
-        <ScrollView>
-          <CourseCard title="Writing skill: How to write formal letter" category="All level" onPress={SignOut}/>
-=======
         <ScrollView showsVerticalScrollIndicator={false} >
+          <CourseCard title="Writing skill: How to write formal letter" category="All level" onPress={SignOut}/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
->>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
