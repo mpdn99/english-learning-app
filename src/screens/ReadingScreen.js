@@ -49,7 +49,7 @@ const ReadingScreen = ({navigation}) => {
           colors={['white', '#D2DFFF']}
           style={styles.bottomMenu}>
           <DropDownPicker
-            placeholder='Chapter'
+            placeholder='CHAPTERS'
             style={styles.chooseChap}
             showArrowIcon={false}
             open={open}
@@ -59,8 +59,8 @@ const ReadingScreen = ({navigation}) => {
             setValue={setValue}
             setItems={setItems}
           />
-          <MaterialIcons name='lightbulb' size={30} color='#4E67A8'/>
-          <Text style={{fontSize: 30, color: '#4E67A8'}}>Aa</Text>
+          <MaterialIcons name='lightbulb' size={30} color='#6360FF'/>
+          <Text style={{fontSize: 30, color: '#6360FF'}}>Aa</Text>
         </LinearGradient>
       </View>
     </SafeAreaView>
@@ -116,9 +116,10 @@ const styles = StyleSheet.create({
   chooseChap: {
     width: 250,
     height: 70,
-    paddingHorizontal: 90,
-    borderColor: 'purple',
+    paddingHorizontal: 80,
+    borderColor: '#6360FF',
     borderWidth: 1.5,
+    backgroundColor: '#D2DFFF'
   }
 });
 
