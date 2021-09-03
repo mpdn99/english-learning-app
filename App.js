@@ -1,12 +1,11 @@
 // import 'react-native-gesture-handler';
 import React from 'react';
 import AppNavigation from './src/navigations';
-import ProfileScreen from './src/screens/ProfileScreen';
+import LoginScreen from './src/screens/LoginScreen';
 
 const App = () => {
   return (
-    //<AppNavigation />
-    <ProfileScreen/>
+    <AppNavigation/>
   );
 };
 

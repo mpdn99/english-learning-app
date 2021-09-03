@@ -30,9 +30,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#6360FF'
   },
   bodyContainer: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#F1F1FA',
-    borderRadius: 20,
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
     paddingTop: 20
   }
 });
