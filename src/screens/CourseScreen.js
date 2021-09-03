@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     backgroundColor: '#F1F1FA',
-    borderRadius: 20,
-    height: 700
+    borderTopStartRadius:20,
+    borderTopEndRadius:20,
+    flex: 2
   },
   tabBtn: {
     flexDirection: 'row',

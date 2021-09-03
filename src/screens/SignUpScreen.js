@@ -3,13 +3,37 @@ import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, But
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
 import { Checkbox } from 'react-native-paper';
+import auth from '@react-native-firebase/auth';
+import SignInWithFacebook from '../services/SignInWithFacebook';
+import SignInWithGoogle from '../services/SignInWithGoogle';
 
-const SignInScreen = () => {
+const SignUpScreen = () => {
 
     const [namecalled, onChangeNameCalled] = React.useState(null);
     const [email, onChangeEmail] = React.useState(null);
     const [pass, onChangePass] = React.useState(null);
     const [confirmpass, onChangeConfirmPass] = React.useState(null);
+
+    const SignUp = () => {
+        auth()
+        .createUserWithEmailAndPassword(email, pass)
+        .then(() => {
+            auth().currentUser.updateProfile({
+                displayName: namecalled,
+                photoURL: 'https://cdn-icons-png.flaticon.com/512/147/147144.png'
+            });
+        })
+        .catch(error => {
+            if (error.code === 'auth/email-already-in-use') {
+            console.log('That email address is already in use!');
+            }
+            if (error.code === 'auth/invalid-email') {
+            console.log('That email address is invalid!');
+            }
+            console.error(error);
+        });
+        // auth().currentUser.sendEmailVerification
+    }
     
     return (
         <View style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -40,7 +64,7 @@ const SignInScreen = () => {
                     <FlatButton
                         title='SIGN UP'
                         color='#6360FF'
-                        pressed='SIGN UP'
+                        onPress={SignUp}
                         long={100}
                     />
                 </View>
@@ -49,13 +73,13 @@ const SignInScreen = () => {
                     <FlatButton
                         title='Sign in with GOOGLE'
                         color='#FE8888'
-                        pressed='GG'
+                        onPress={SignInWithGoogle}
                     />
                     <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
                         color='#6360FF'
-                        pressed='FB'
+                        onPress={SignInWithFacebook}
                     />
                 </View>
             </View>
@@ -109,4 +133,4 @@ const styles = StyleSheet.create ({
     }
 });
 
-export default SignInScreen;
+export default SignUpScreen;

@@ -7,12 +7,7 @@ import auth from '@react-native-firebase/auth';
 import SettingButton from '../components/SettingButton';
 
 const ProfileScreen = ({navigation}) => {
-
-  const SignOut = () => {
-    auth()
-    .signOut()
-  }
-
+  const user = auth().currentUser;
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: '#6360FF'}}>
       <View style={styles.topView}>
@@ -24,11 +19,11 @@ const ProfileScreen = ({navigation}) => {
         <View style={styles.avatarContainer}>
             <Image
               style={styles.avatar}
-              source={require('../images/avatar.jpg')}
+              source={{uri: user.photoURL}}
             />
             <View>
-              <Text style={styles.userName}>Gud Boy</Text>
-              <Text style={styles.userMail}>mobile.istech.club@gmail.com</Text>
+              <Text style={styles.userName}>{user.displayName}</Text>
+              <Text style={styles.userMail}>{user.email}</Text>
             </View>
         </View>
         <View style={styles.lineStyle}></View>
@@ -59,7 +54,7 @@ const ProfileScreen = ({navigation}) => {
           <Text style={{fontSize: 14, fontWeight: 'bold', color: 'gray'}}>Total 6</Text>
         </View>
         <ScrollView showsVerticalScrollIndicator={false}>
-          <CourseCard title="Writing skill: How to write formal letter" category="All level" onPress={SignOut}/>
+          <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>

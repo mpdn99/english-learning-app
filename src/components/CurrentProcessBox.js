@@ -2,13 +2,13 @@ import React from 'react';
 import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const CurrentProcessBox = () => {
+const CurrentProcessBox = ({photoURL}) => {
     return (
         <View style={styles.viewBox}>
             <View style={styles.Unknown3}>
                 <Image
                     style={styles.Unknown2}
-                    source={require('../images/avatar.jpg')}
+                    source={{uri: photoURL}}
                 />
                 <View style={{ paddingLeft: 15 }}>
                     <Text style={styles.Unknown1}>Declarative interfaces for any Apple Devices</Text>

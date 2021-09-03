@@ -46,10 +46,10 @@ const AppNavigation = () => {
                     </>
                 ):(
                     <>
-                    <Stack.Screen name="Main" component={BottomTabNavigator}/>
-                    <Stack.Screen name="Listening" component={AudioplaylistScreen}/>
-                    <Stack.Screen name="Reading" component={ReadingScreen}/>
-                    <Stack.Screen name="Setting" component={SettingScreen}/>
+                        <Stack.Screen name="Main" component={BottomTabNavigator}/>
+                        <Stack.Screen name="Listening" component={AudioplaylistScreen}/>
+                        <Stack.Screen name="Reading" component={ReadingScreen}/>
+                        <Stack.Screen name="Setting" component={SettingScreen}/>
                     </>
 
                 )} 

@@ -1,27 +1,31 @@
 import React from 'react';
-import {StyleSheet, View, Text, StatusBar, ScrollView, Dimensions, Image, SafeAreaView} from 'react-native';
+import {StyleSheet, View, Text, StatusBar, ScrollView, Dimensions, Image, SafeAreaView, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CourseCard from '../components/CourseCard';
 import CurrentProcessBox from '../components/CurrentProcessBox';
+import auth from '@react-native-firebase/auth';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
+  const user = auth().currentUser;
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <View style={styles.topView}>
         <View style={styles.avatarContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('Profile')}>
             <Image
-              style={styles.avatar}
-              source={require('../images/avatar.jpg')}
+                style={styles.avatar}
+                source={{uri: user.photoURL}}
             />
+          </TouchableOpacity>
             <View style={{ paddingLeft: 15 }}>
-              <Text style={styles.userName}>Gud Boy</Text>
-              <Text style={{ color: 'white' }}>mobile.istech.club@gmail.com</Text>
+              <Text style={styles.userName}>{user.displayName}</Text>
+              <Text style={{ color: 'white' }}>{user.email}</Text>
             </View>
         </View>
         <MaterialIcons style={styles.notificationIcon} name='notifications' color='white' size={25} />
       </View>
       <View style={styles.bottomView}>
-      <CurrentProcessBox/>
+      <CurrentProcessBox photoURL={user.photoURL}/>
         <Text style={styles.text}>Recommendation</Text>
         <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
         <CourseCard title="Writing skill: How to write formal letter" category="All level"/>

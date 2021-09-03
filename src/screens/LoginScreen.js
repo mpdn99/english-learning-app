@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, Button, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
 import { Checkbox } from 'react-native-paper';
+import SignInWithFacebook from '../services/SignInWithFacebook';
+import SignInWithGoogle from '../services/SignInWithGoogle';
 import auth from '@react-native-firebase/auth';
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-
-GoogleSignin.configure({
-    webClientId: '980417164949-ogqnuft06b56bpbk8dmj6nsgjjd5bk0u.apps.googleusercontent.com',
-  });
+import * as Keychain from 'react-native-keychain';
 
 const LoginScreen = ({navigation}) => {
 
@@ -18,7 +15,7 @@ const LoginScreen = ({navigation}) => {
 
     const [errorMsg, setErrorMsg] = useState(null);
 
-    const [isSelected, setSelection] = React.useState(false); //checkbox remember
+    const [isSelected, setSelection] = useState(false); //checkbox remember
 
     const SignInWithMail = () => {
         auth()
@@ -28,34 +25,24 @@ const LoginScreen = ({navigation}) => {
                 setErrorMsg('Incorrect username or password.');
             }
             console.log(error);
-        });
+        })
     }
 
-    const SignInWithFacebook = async () => {
-        // Attempt login with permissions
-        const result = await LoginManager.logInWithPermissions(['public_profile', 'email']);
-        if (result.isCancelled) {
-            throw 'User cancelled the login process';
-        }
-        // Once signed in, get the users AccesToken
-        const data = await AccessToken.getCurrentAccessToken();
-        if (!data) {
-            throw 'Something went wrong obtaining access token';
-        }
-        // Create a Firebase credential with the AccessToken
-        const facebookCredential = auth.FacebookAuthProvider.credential(data.accessToken);
-        // Sign-in the user with the credential
-        return auth().signInWithCredential(facebookCredential);
-    }
-
-    const SignInWithGoogle = async () => {
-        // Get the users ID token
-        const { idToken } = await GoogleSignin.signIn();
-        // Create a Google credential with the token
-        const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-        // Sign-in the user with the credential
-        return auth().signInWithCredential(googleCredential);
-    }
+    // useEffect(async () => {
+    //     try {
+    //         // Retrieve the credentials
+    //         const credentials = await Keychain.getGenericPassword();
+    //         if (credentials) {
+    //           console.log(
+    //             'Credentials successfully loaded for user ' + credentials.username +' '+ credentials.password 
+    //           );
+    //         } else {
+    //             console.log('No credentials stored');
+    //         }
+    //       } catch (error) {
+    //         console.log("Keychain couldn't be accessed!", error);
+    //     }
+    // }, [])
     
     return (
         <View style={styles.scrollView} showsVerticalScrollIndicator={false}>
@@ -89,16 +76,17 @@ const LoginScreen = ({navigation}) => {
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
-                            <View style={{marginTop: -8}}>
+                            {/* <View style={{marginTop: -8}}>
                                 <Checkbox.Android
                                     status={isSelected ? 'checked' : 'unchecked'}
                                     onPress={() => {
                                     setSelection(!isSelected);
+                                    isSelected?(Keychain.setGenericPassword(email, pass, isSelected)):(Keychain.resetGenericPassword())
                                     }}
                                     color={'#FF8181'}
                                 />
                             </View>
-                            <Text style={{}}>Remember</Text>
+                            <Text style={{}}>Remember</Text> */}
                         </View>
                         <Text>Forgot Password</Text>
                     </View>
