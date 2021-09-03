@@ -38,7 +38,7 @@ const TestScreen = ({navigation}) => {
           color='purple'
         />
         <ChooseSkill
-          skill='Quizz'
+          skill='Quizzz'
           navigation={navigation}
           screen='Quizz'
           icon='puzzle'
