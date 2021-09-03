@@ -18,7 +18,7 @@ const ReturnTestScreen = ({navigation, title, iconColor, textColor}) => {
 
 const styles = StyleSheet.create({
     bar: {
-        backgroundColor: 'white',
+        backgroundColor: '#F1F1FA',
         height: 55,
         flexDirection: 'row',
         borderTopStartRadius: 20,
