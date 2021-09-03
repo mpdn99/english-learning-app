@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import TestScreen from '../screens/TestScreen';
 
 const ReturnTestScreen = ({navigation, title, iconColor, textColor}) => {
     const Back = () => {

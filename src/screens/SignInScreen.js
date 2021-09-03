@@ -39,7 +39,7 @@ const SignInScreen = () => {
                     />
                     <FlatButton
                         title='SIGN UP'
-                        color='blue'
+                        color='#6360FF'
                         pressed='SIGN UP'
                         long={100}
                     />
@@ -48,13 +48,13 @@ const SignInScreen = () => {
                 <View style={styles.button}>
                     <FlatButton
                         title='Sign in with GOOGLE'
-                        color='red'
+                        color='#FE8888'
                         pressed='GG'
                     />
                     <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
-                        color='blue'
+                        color='#6360FF'
                         pressed='FB'
                     />
                 </View>
@@ -67,7 +67,7 @@ const SignInScreen = () => {
 const styles = StyleSheet.create ({
     scrollView: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#F1F1FA'
     },
     topView: {
         flex: 1,
@@ -76,7 +76,7 @@ const styles = StyleSheet.create ({
     },
     bottomView: {
         flex: 2.5,
-        backgroundColor: 'white',
+        backgroundColor: '#F1F1FA',
         padding: 40,
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
@@ -99,6 +99,7 @@ const styles = StyleSheet.create ({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        backgroundColor: '#FCFCFF'
       },
     button: {
         justifyContent: 'space-between',

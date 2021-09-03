@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput} from 'react-native';
+import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, KeyboardAvoidingView} from 'react-native';
 import CourseCard from '../components/CourseCard';
+import SectionDetail from '../components/SectionDetail';
+import SectionName from '../components/SectionName';
 // import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import V2ReturnTestScreen from '../components/V2ReturnTestScreen';
 
@@ -65,31 +67,87 @@ const AudioplaylistScreen = ({navigation}) => {
 const CourseContentDetail = () => {
     return (
         <ScrollView>
-            <CourseCard title="Writing skill: How to write informal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write informal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write informal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write informal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write informal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
-            <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
+          <SectionName
+            section='1'
+            topic='Introduction'
+            part='3/5'
+            min='10'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <View style={styles.lineStyle}></View>
+          <SectionName
+            section='1'
+            topic='Introduction'
+            part='3/5'
+            min='10'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <View style={styles.lineStyle}></View>
+          <SectionName
+            section='1'
+            topic='Introduction'
+            part='3/5'
+            min='10'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <SectionDetail
+            section='1'
+            topic='say hello'
+            min='9'
+          />
+          <View style={styles.lineStyle}></View>
         </ScrollView>
     );
 }
 
 const YourNotebookDetail = () => {
     return (
-            <View style={styles.noteView}
-                        showsVerticalScrollIndicator={false}>
-                <TextInput
-                    style={styles.textNote}
-                    multiline
-                    editable
-                    placeholder='Note: ' >
-                </TextInput>
-            </View>
+      <View style={styles.noteView}
+                  showsVerticalScrollIndicator={false}>
+        <TextInput
+            style={styles.textNote}
+            multiline
+            editable
+            placeholder='Note: ' >
+        </TextInput>
+      </View>
     );
 }
 
@@ -120,7 +178,7 @@ const styles = StyleSheet.create({
       height: Dimensions.get('window').height*50/100,
   },
   textNote: {
-      fontSize: 14,
+      fontSize: 20,
       marginVertical: 10,
       marginHorizontal: 20,
   },
@@ -137,7 +195,13 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width/2,
     justifyContent: 'center',
     alignItems: 'center'
-  }
+  },
+  lineStyle:{
+    borderWidth: 0.3,
+    borderColor:'gray',
+    marginVertical: 10,
+    marginHorizontal: 30
+  },
 
 });
 

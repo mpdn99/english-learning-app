@@ -18,7 +18,7 @@ const TestScreen = ({navigation}) => {
         <CourseCard title="Reading"/>
         <CourseCard title="Speaking"/>
         <CourseCard title="Writing"/>
-        <CourseCard title="Listening"/>
+        <CourseCard title="Listening" category='All level' goTo='Listening' />
       </View>
     </SafeAreaView>
   );

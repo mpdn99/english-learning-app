@@ -6,7 +6,7 @@ import HeaderBar from '../components/HeaderBar';
 
 const ProfileScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#6360FF'}}>
       <View style={styles.topView}>
         <HeaderBar title="" navigation={navigation} />
         <View style={styles.avatarContainer}>
@@ -66,12 +66,12 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height /1.5
   },
   bottomView: {
-    flex: 2,
+    flex: 2.25,
     backgroundColor: 'white',
     padding: 5,
     borderTopStartRadius: 40,
     borderTopEndRadius: 40,
-    bottom: 40,
+    bottom: -5,
   },
   textView: {
     marginTop: 20,

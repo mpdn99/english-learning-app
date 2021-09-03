@@ -32,18 +32,19 @@ const LoginScreen = () => {
                     />
                     <FlatButton
                         title='SIGN IN'
-                        color='blue'
+                        color='#6360FF'
                         pressed='SIGN IN'
                         long={100}
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
                             <View style={{marginTop: -8}}>
-                                <Checkbox.Android status={isSelected ? 'checked' : 'unchecked'}
-                                            onPress={() => {
-                                            setSelection(!isSelected);
-                                            }}
-                                            color={'#FF8181'}
+                                <Checkbox.Android
+                                    status={isSelected ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                    setSelection(!isSelected);
+                                    }}
+                                    color={'#FF8181'}
                                 />
                             </View>
                             <Text style={{}}>Remember</Text>
@@ -55,13 +56,13 @@ const LoginScreen = () => {
                 <View style={styles.button}>
                     <FlatButton
                         title='Sign in with GOOGLE'
-                        color='red'
+                        color='#FF8181'
                         pressed='GG'
                     />
                     <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
-                        color='blue'
+                        color='#6360FF'
                         pressed='FB'
                     />
                 </View>
@@ -74,7 +75,7 @@ const LoginScreen = () => {
 const styles = StyleSheet.create ({
     scrollView: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#F1F1FA'
     },
     topView: {
         flex: 1,
@@ -83,7 +84,7 @@ const styles = StyleSheet.create ({
     },
     bottomView: {
         flex: 1.5,
-        backgroundColor: 'white',
+        backgroundColor: '#F1F1FA',
         padding: 40,
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
@@ -106,6 +107,7 @@ const styles = StyleSheet.create ({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        backgroundColor: '#FCFCFF'
       },
     rememberPass: {
         height: 50,
