@@ -80,18 +80,25 @@ const LoginScreen = ({navigation}) => {
                     />
                     <FlatButton
                         title='SIGN IN'
+<<<<<<< HEAD
                         color='blue'
                         onPress={SignInWithMail}
                         long={140}
+=======
+                        color='#6360FF'
+                        pressed='SIGN IN'
+                        long={100}
+>>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
                     />
                     <View style={styles.rememberPass}>
                         <View style={{flex: 1, marginLeft: 5, flexDirection: 'row'}}>
                             <View style={{marginTop: -8}}>
-                                <Checkbox.Android status={isSelected ? 'checked' : 'unchecked'}
-                                            onPress={() => {
-                                            setSelection(!isSelected);
-                                            }}
-                                            color={'#FF8181'}
+                                <Checkbox.Android
+                                    status={isSelected ? 'checked' : 'unchecked'}
+                                    onPress={() => {
+                                    setSelection(!isSelected);
+                                    }}
+                                    color={'#FF8181'}
                                 />
                             </View>
                             <Text style={{}}>Remember</Text>
@@ -103,14 +110,24 @@ const LoginScreen = ({navigation}) => {
                 <View style={styles.button}>
                     <FlatButton
                         title='Sign in with GOOGLE'
+<<<<<<< HEAD
                         color='red'
                         onPress={SignInWithGoogle}
+=======
+                        color='#FF8181'
+                        pressed='GG'
+>>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
                     />
-                    <View style={{width: Dimensions.get('window').width*1/14}}></View>
+                    <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
+<<<<<<< HEAD
                         color='blue'
                         onPress={SignInWithFacebook}
+=======
+                        color='#6360FF'
+                        pressed='FB'
+>>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
                     />
                 </View>
             </View>
@@ -122,7 +139,7 @@ const LoginScreen = ({navigation}) => {
 const styles = StyleSheet.create ({
     scrollView: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: '#F1F1FA'
     },
     topView: {
         flex: 1,
@@ -131,7 +148,7 @@ const styles = StyleSheet.create ({
     },
     bottomView: {
         flex: 1.5,
-        backgroundColor: 'white',
+        backgroundColor: '#F1F1FA',
         padding: 40,
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
@@ -159,6 +176,7 @@ const styles = StyleSheet.create ({
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        backgroundColor: '#FCFCFF'
       },
     rememberPass: {
         height: 50,

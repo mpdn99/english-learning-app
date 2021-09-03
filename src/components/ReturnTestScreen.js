@@ -1,7 +1,6 @@
 import React from 'react';
 import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import TestScreen from '../screens/TestScreen';
 
 const ReturnTestScreen = ({navigation, title, iconColor, textColor}) => {
     const Back = () => {
@@ -19,7 +18,7 @@ const ReturnTestScreen = ({navigation, title, iconColor, textColor}) => {
 
 const styles = StyleSheet.create({
     bar: {
-        backgroundColor: 'yellow',
+        backgroundColor: '#F1F1FA',
         height: 55,
         flexDirection: 'row',
         borderTopStartRadius: 20,

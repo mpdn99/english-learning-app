@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, Text, Dimensions, SafeAreaView} from 'react-native';
-import CourseCard from '../components/CourseCard';
 import HeaderBar from '../components/HeaderBar';
+import { Button } from 'react-native-paper';
+import ChooseSkill from '../components/ChooseSkill';
 
 
 
@@ -12,13 +13,37 @@ const TestScreen = ({navigation}) => {
       <View style={styles.bodyContainer}>
         <Text style={{fontSize: 16,
                       fontWeight: 'bold',
-                      marginVertical: 15,
+                      marginVertical: 20,
                       marginHorizontal: Dimensions.get('window').width*1/7}}
         >Available Test</Text>
-        <CourseCard title="Reading"/>
-        <CourseCard title="Speaking"/>
-        <CourseCard title="Writing"/>
-        <CourseCard title="Listening"/>
+        <ChooseSkill
+          skill='Listening Skill'
+          navigation={navigation}
+          screen='Listening'
+          icon='face'
+          color='blue'
+        />
+        <ChooseSkill
+          skill='Reading Skill'
+          navigation={navigation}
+          screen='Reading'
+          icon='book'
+          color='green'
+        />
+        <ChooseSkill
+          skill='Writing'
+          navigation={navigation}
+          screen=''
+          icon='pencil'
+          color='purple'
+        />
+        <ChooseSkill
+          skill='Quizzz'
+          navigation={navigation}
+          screen='Quizz'
+          icon='puzzle'
+          color='#ff9000'
+        />
       </View>
     </SafeAreaView>
   );
@@ -30,9 +55,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#6360FF'
   },
   bodyContainer: {
-    flex: 1,
+    flex: 2,
     backgroundColor: '#F1F1FA',
-    borderRadius: 20,
+    borderTopStartRadius: 20,
+    borderTopEndRadius: 20,
     paddingTop: 20
   }
 });

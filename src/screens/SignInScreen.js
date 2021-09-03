@@ -1,19 +1,18 @@
 import React from 'react';
-import {SafeAreaView ,StyleSheet, View, Text, ScrollView, Dimensions, TextInput, Button, Alert} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, Button, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
+import { Checkbox } from 'react-native-paper';
 
 const SignInScreen = () => {
+
     const [namecalled, onChangeNameCalled] = React.useState(null);
     const [email, onChangeEmail] = React.useState(null);
     const [pass, onChangePass] = React.useState(null);
     const [confirmpass, onChangeConfirmPass] = React.useState(null);
     
     return (
-        <SafeAreaView style={styles.scrollView}
-              showsVerticalScrollIndicator={false}
-              backgroundColor='white'
-        >
+        <View style={styles.scrollView} showsVerticalScrollIndicator={false}>
             <View style={styles.topView}></View>
             <View style={styles.bottomView}>
                 <Text style={styles.welcome}>Welcome</Text>
@@ -40,27 +39,27 @@ const SignInScreen = () => {
                     />
                     <FlatButton
                         title='SIGN UP'
-                        color='blue'
-                        pressed='succesful'
-                        long={135}
+                        color='#6360FF'
+                        pressed='SIGN UP'
+                        long={100}
                     />
                 </View>
-                <Text style={{alignSelf: 'center', marginTop: 20}}>Or</Text>
+                <Text style={{alignSelf: 'center', marginTop: 10}}>Or</Text>
                 <View style={styles.button}>
                     <FlatButton
-                        title='Sign up with GOOGLE'
-                        color='red'
-                        pressed='GG sign up'
+                        title='Sign in with GOOGLE'
+                        color='#FE8888'
+                        pressed='GG'
                     />
-                    <View style={{width: Dimensions.get('window').width*1/30}}></View>
+                    <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
-                        title='Sign up with FACEBOOK'
-                        color='blue'
-                        pressed='FB sign up'
+                        title='Sign in with FACEBOOK'
+                        color='#6360FF'
+                        pressed='FB'
                     />
                 </View>
             </View>
-        </SafeAreaView>
+        </View>
     );
 };
 
@@ -68,6 +67,7 @@ const SignInScreen = () => {
 const styles = StyleSheet.create ({
     scrollView: {
         flex: 1,
+        backgroundColor: '#F1F1FA'
     },
     topView: {
         flex: 1,
@@ -75,12 +75,12 @@ const styles = StyleSheet.create ({
         height: Dimensions.get('window').height /2.5
     },
     bottomView: {
-        flex: 1.5,
-        backgroundColor: 'white',
+        flex: 2.5,
+        backgroundColor: '#F1F1FA',
         padding: 40,
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
-        bottom: 120,
+        bottom: 50,
     },
     welcome: {
         color: '#4632A1',
@@ -92,19 +92,19 @@ const styles = StyleSheet.create ({
         fontWeight: 'bold',
     },
     viewForm: {
-        marginTop: 20,
+        marginTop: 30,
     },
     textInput: {
         height: 40,
         margin: 12,
         borderWidth: 1,
         padding: 10,
+        backgroundColor: '#FCFCFF'
       },
     button: {
-      
         justifyContent: 'space-between',
         flexDirection: 'row',
-        marginTop: 20,
+        marginTop: 10,
         marginHorizontal: -20
     }
 });

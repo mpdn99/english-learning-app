@@ -11,7 +11,7 @@ const ProfileScreen = ({navigation}) => {
     .signOut()
   }
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#6360FF'}}>
       <View style={styles.topView}>
         <HeaderBar title="" navigation={navigation} />
         <View style={styles.avatarContainer}>
@@ -51,8 +51,13 @@ const ProfileScreen = ({navigation}) => {
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>Courses</Text>
           <Text style={{fontSize: 14, fontWeight: 'bold', color: 'gray'}}>Total 6</Text>
         </View>
+<<<<<<< HEAD
         <ScrollView>
           <CourseCard title="Writing skill: How to write formal letter" category="All level" onPress={SignOut}/>
+=======
+        <ScrollView showsVerticalScrollIndicator={false} >
+          <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
+>>>>>>> fb791d20900225cea8ef7c86b9fbddc3da9c4c36
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
@@ -71,12 +76,12 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height /1.5
   },
   bottomView: {
-    flex: 2,
+    flex: 2.25,
     backgroundColor: 'white',
     padding: 5,
-    borderTopStartRadius: 50,
-    borderTopEndRadius: 50,
-    bottom: 40,
+    borderTopStartRadius: 40,
+    borderTopEndRadius: 40,
+    bottom: -5,
   },
   textView: {
     marginTop: 20,
