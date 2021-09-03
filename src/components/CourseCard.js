@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native'
 
-const CourseCard = ({title, category, goTo}) => {
+const CourseCard = ({title, category, onPress}) => {
     return (
         <TouchableOpacity
             style={styles.courseCard}
+            onPress={onPress}
         >
             <Image source={require('../images/Frame24.png')} style={{height: 60, width: 60, marginRight: 15, borderRadius: 15}}></Image>
             <View style={{flexDirection: 'column', flexShrink: 1}}>

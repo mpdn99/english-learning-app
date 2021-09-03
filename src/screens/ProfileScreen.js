@@ -3,8 +3,13 @@ import {SafeAreaView ,StyleSheet, View, Text, StatusBar, ScrollView, Dimensions,
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CourseCard from '../components/CourseCard';
 import HeaderBar from '../components/HeaderBar';
+import auth from '@react-native-firebase/auth';
 
 const ProfileScreen = ({navigation}) => {
+  const SignOut = () => {
+    auth()
+    .signOut()
+  }
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
       <View style={styles.topView}>
@@ -47,7 +52,7 @@ const ProfileScreen = ({navigation}) => {
           <Text style={{fontSize: 14, fontWeight: 'bold', color: 'gray'}}>Total 6</Text>
         </View>
         <ScrollView>
-          <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
+          <CourseCard title="Writing skill: How to write formal letter" category="All level" onPress={SignOut}/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>

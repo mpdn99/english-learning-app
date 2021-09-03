@@ -5,7 +5,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import HomeScreen from '../screens/HomeScreen';
 import CourseScreen from '../screens/CourseScreen';
 import TestScreen from '../screens/TestScreen';
-
+import TestQuizzScreen from '../screens/TestQuizzScreen';
 
 import ProfileScreen from '../screens/ProfileScreen';
 
@@ -60,7 +60,7 @@ const BottomTabNavigator = () => {
             />
             <Tab.Screen
             name="Profile"
-            component={TestQuizzScreen}
+            component={ProfileScreen}
             options={{
                 tabBarVisible: 'false',
                 tabBarLabel: 'Profile',
@@ -69,7 +69,7 @@ const BottomTabNavigator = () => {
                 ),
             }}
             />
-            <Tab.Screen
+            {/* <Tab.Screen
             name="Login"
             component={SignInScreen}
             options={{
@@ -79,7 +79,7 @@ const BottomTabNavigator = () => {
                 <MaterialIcons name="person" size={26} color={color} />
                 ),
             }}
-            />
+            /> */}
         </Tab.Navigator>
     )
 }

@@ -1,11 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
 
-const FlatButton = ({title, pressed, color, long}) => {
+const FlatButton = ({title, onPress, color, long}) => {
     return (
         <TouchableOpacity
             style={[styles.flatbutton, {backgroundColor: color, paddingHorizontal: long}]}
-            onPress={() => Alert.alert(pressed)}
+            onPress={onPress}
         >
             <View style={{
                 flexDirection: 'column',

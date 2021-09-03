@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EnglishLearningApp</string>
+    <string name="facebook_app_id">708024700153593</string>
+    <string name="facebook_client_token">85eb395d4ae8843c83c2d35c5fad2093</string>
 </resources>
