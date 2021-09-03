@@ -8,19 +8,14 @@ import {
     Dimensions
 } from 'react-native';
 
-const PreviousNextButton = props => {
-    const styleForButton = (
-        <View style={[styles.button, {backgroundColor: props.color}]}>
-            <View style={{width: 150, justifyContent: 'center'}}>
-                <Text style={styles.buttontext}>
-                    {props.text}
-                </Text>
-            </View>
-        </View>
-    );
+const PreviousNextButton = ({title, color, pressed}) => {
     return (
-        <TouchableOpacity onPress={props.onPress}>
-            {styleForButton}
+        <TouchableOpacity
+            style={[styles.button, {backgroundColor: color}]}
+            onPress={() => Alert.alert(pressed)}>
+            <Text style={styles.buttontext}>
+                {title}
+            </Text>
         </TouchableOpacity>
     );
 };
@@ -29,8 +24,10 @@ const styles = StyleSheet.create({
     button: {
         flex: 1,
         borderRadius: 10,
-        paddingVertical: 25,
-        marginTop: 10,
+        height: 60,
+        paddingTop: 20,
+        marginTop: 20,
+        marginHorizontal: 10,
     },
     buttontext:{
         color: 'white',

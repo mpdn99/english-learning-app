@@ -74,14 +74,14 @@ const TestQuizzScreen = ({navigation}) => {
               <View style={styles.lineStyle}></View>
               <View style={styles.button}>
                     <PreviousNextButton
-                        text='Previous'
-                        color='#6360FF'
-                        onPress={() => Alert.alert('GG')}
+                      title='Previous'
+                      color='#6360FF'
+                      pressed='back'
                     />
                     <PreviousNextButton
-                    text='Next'
-                    color='#7DC579'
-                    onPress={() => Alert.alert('FB')}
+                      title='Next'
+                      color='#7DC579'
+                      pressed='next'
                     />
               </View>
             </View>
@@ -96,16 +96,16 @@ const styles = StyleSheet.create ({
         backgroundColor: 'white'
     },
     topView: {
-        flex: 1.5,
+        flex: 2,
         backgroundColor: '#6360FF',
     },
     bottomView: {
-        flex: 1,
+        flex: 2,
         backgroundColor: 'white',
         padding: 20,
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
-        bottom: Dimensions.get('window').height/8
+        bottom: Dimensions.get('window').height/20
     },
     questText: {
       fontSize: 30,
