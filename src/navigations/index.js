@@ -21,9 +21,10 @@ const AppNavigation = () => {
             >   
                 {/* <Stack.Screen name="Login" component={LoginScreen}/>
                 <Stack.Screen name="SignIn" component={SignInScreen}/> */}
-                <Stack.Screen name='Listening' component={AudioplaylistScreen}/>
                 <Stack.Screen name="Main" component={BottomTabNavigator}/>
                 <Stack.Screen name='Reading' component={ReadingScreen}/>
+                <Stack.Screen name='Listening' component={AudioplaylistScreen}/>
+                <Stack.Screen name='Quizz' component={TestQuizzScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     )
