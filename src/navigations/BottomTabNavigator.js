@@ -69,17 +69,6 @@ const BottomTabNavigator = () => {
                 ),
             }}
             />
-            <Tab.Screen
-            name="Login"
-            component={SignInScreen}
-            options={{
-                tabBarVisible: 'false',
-                tabBarLabel: 'Login',
-                tabBarIcon: ({color}) => (
-                <MaterialIcons name="person" size={26} color={color} />
-                ),
-            }}
-            />
         </Tab.Navigator>
     )
 }

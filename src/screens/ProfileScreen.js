@@ -46,7 +46,7 @@ const ProfileScreen = ({navigation}) => {
           <Text style={{fontSize: 16, fontWeight: 'bold'}}>Courses</Text>
           <Text style={{fontSize: 14, fontWeight: 'bold', color: 'gray'}}>Total 6</Text>
         </View>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false} >
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
           <CourseCard title="Writing skill: How to write formal letter" category="All level"/>
@@ -69,8 +69,8 @@ const styles = StyleSheet.create({
     flex: 2,
     backgroundColor: 'white',
     padding: 5,
-    borderTopStartRadius: 50,
-    borderTopEndRadius: 50,
+    borderTopStartRadius: 40,
+    borderTopEndRadius: 40,
     bottom: 40,
   },
   textView: {
