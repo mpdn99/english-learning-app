@@ -94,7 +94,7 @@ const LoginScreen = ({navigation}) => {
                             </View>
                             <Text style={{}}>Remember</Text> */}
                         </View>
-                        <Text>Forgot Password</Text>
+                        <Text onPress={() => navigation.push('ForgotPass')}>Forgot Password</Text>
                     </View>
                 </View>
                 <Text style={{alignSelf: 'center', marginTop: -20}}>Or</Text>
