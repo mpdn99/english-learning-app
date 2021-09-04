@@ -6,13 +6,23 @@ import { Checkbox } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
 import SignInWithFacebook from '../services/SignInWithFacebook';
 import SignInWithGoogle from '../services/SignInWithGoogle';
+import { useValidation } from 'react-native-form-validator';
 
 const SignUpScreen = ({navigation}) => {
 
-    const [namecalled, onChangeNameCalled] = React.useState(null);
+    const [namecalled, onChangeNameCalled] = React.useState();
     const [email, onChangeEmail] = React.useState(null);
     const [pass, onChangePass] = React.useState(null);
     const [confirmpass, onChangeConfirmPass] = React.useState(null);
+
+    //Firebase Register Condition
+
+    const { validate, isFieldInError, getErrorsInField, getErrorMessages } = 
+        useValidation({
+            state: {
+                email, pass, confirmpass
+            }
+        });
 
     const SignUp = () => {
         auth()
@@ -32,6 +42,11 @@ const SignUpScreen = ({navigation}) => {
             }
             console.error(error);
         });
+        validate({
+            email: {email: true, required: true},
+            pass: { minlengthpass: 7, required: true },
+            confirmpass: { equalPassword: pass }
+        })
         // auth().currentUser.sendEmailVerification
     }
     
@@ -49,6 +64,10 @@ const SignUpScreen = ({navigation}) => {
                             placeholder="What should we call you?"
                         />
                     </View>
+                    {isFieldInError('namecalled') &&
+                        getErrorsInField('namecalled').map(errorMessage => (
+                            <Text style={styles.errorMsg}>{errorMessage}</Text>
+                    ))}
                     <View style={styles.inputView}>
                         <MaterialIcons name='mail' size={26} color='#6360FF' style={styles.icon}/>
                         <TextInput style={styles.textInput}
@@ -57,6 +76,10 @@ const SignUpScreen = ({navigation}) => {
                             placeholder="Email"
                         />
                     </View>
+                    {isFieldInError('email') &&
+                        getErrorsInField('email').map(errorMessage => (
+                            <Text style={styles.errorMsg}>{errorMessage}</Text>
+                    ))}
                     <View style={styles.inputView}>
                         <MaterialIcons name='lock' size={26} color='#6360FF' style={styles.icon}/>
                         <TextInput style={styles.textInput}
@@ -65,6 +88,10 @@ const SignUpScreen = ({navigation}) => {
                             placeholder="Password"
                         />
                     </View>
+                    {isFieldInError('pass') &&
+                        getErrorsInField('pass').map(errorMessage => (
+                            <Text style={styles.errorMsg}>{errorMessage}</Text>
+                    ))}
                     <View style={styles.inputView}>
                         <MaterialIcons name='preview' size={26} color='#6360FF' style={styles.icon}/>
                         <TextInput style={styles.textInput}
@@ -73,6 +100,12 @@ const SignUpScreen = ({navigation}) => {
                             placeholder="Confirm Password"
                         />
                     </View>
+
+                    {/* {isFieldInError('confirmpass') &&
+                        getErrorsInField('confirmpass').map(errorMessage => (
+                            <Text style={styles.errorMsg}>{errorMessage}</Text>
+                    ))} */}
+
                     <FlatButton
                         title='SIGN UP'
                         color='#6360FF'
@@ -116,7 +149,7 @@ const styles = StyleSheet.create ({
         height: Dimensions.get('window').height /2.5
     },
     bottomView: {
-        flex: 2.5,
+        flex: 3,
         backgroundColor: '#F1F1FA',
         padding: 40,
         borderTopStartRadius: 50,
@@ -158,10 +191,16 @@ const styles = StyleSheet.create ({
         justifyContent: 'center',
         borderBottomColor: 'blue',
         borderBottomWidth: 0.3,
-        marginBottom: 20
+        marginBottom: 15
     },
     icon: {
         padding: 10
+    },
+    errorMsg: {
+        color: 'red',
+        textAlign: 'left',
+        fontWeight: '500',
+        marginTop: -15
     },
 });
 
