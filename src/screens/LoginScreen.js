@@ -7,6 +7,7 @@ import SignInWithFacebook from '../services/SignInWithFacebook';
 import SignInWithGoogle from '../services/SignInWithGoogle';
 import auth from '@react-native-firebase/auth';
 import * as Keychain from 'react-native-keychain';
+import { useValidation } from 'react-native-form-validator';
 
 const LoginScreen = ({navigation}) => {
 
@@ -17,6 +18,14 @@ const LoginScreen = ({navigation}) => {
 
     const [isSelected, setSelection] = useState(false); //checkbox remember
 
+    //Firebase Sign in condition
+    const { validate, isFieldInError, getErrorsInField, getErrorMessages } = 
+        useValidation({
+            state: {
+                email, pass
+            }
+        });
+
     const SignInWithMail = () => {
         auth()
         .signInWithEmailAndPassword(email, pass)
@@ -25,6 +34,10 @@ const LoginScreen = ({navigation}) => {
                 setErrorMsg('Incorrect username or password.');
             }
             console.log(error);
+        })
+        validate({
+            email: {email: true, required: true},
+            pass: { minlengthpass: 7, required: true }
         })
     }
 
@@ -53,7 +66,10 @@ const LoginScreen = ({navigation}) => {
                     <Text style={styles.registernow}>{' '}Register now</Text>
                 </Text>
                 <View style={styles.viewForm}>
+
                     <Text style={styles.errorMsg}>{errorMsg}</Text>
+                    <Text style={styles.errorMsg}>{getErrorMessages()}</Text>
+                
                     <View style={styles.inputView}>
                         <MaterialIcons name='mail' size={26} color='#6360FF' style={styles.icon}/>
                         <TextInput style={styles.textInput}
@@ -71,6 +87,10 @@ const LoginScreen = ({navigation}) => {
                             secureTextEntry={true}
                         />
                     </View>
+                    {isFieldInError('pass') &&
+                        getErrorsInField('pass').map(errorMessage => (
+                            <Text style={styles.errorMsg}>{errorMessage}</Text>
+                        ))}
                     <FlatButton
                         title='SIGN IN'
                         color='blue'
@@ -140,7 +160,7 @@ const styles = StyleSheet.create ({
         bottom: 50,
     },
     welcome: {
-        color: '#4632A1',
+        color: '#6360FF',
         fontSize: 32,
         marginBottom: 5,
     },
