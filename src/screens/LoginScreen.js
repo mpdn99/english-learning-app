@@ -49,22 +49,28 @@ const LoginScreen = ({navigation}) => {
             <View style={styles.topView}></View>
             <View style={styles.bottomView}>
                 <Text style={styles.welcome}>Welcome</Text>
-                <Text>Don't have account?
-                    <Text style={styles.registernow} onPress={() => {navigation.navigate('SignUp')}}>{' '}Register now</Text>
+                <Text onPress={() => {navigation.navigate('SignUp')}}>Don't have account?
+                    <Text style={styles.registernow}>{' '}Register now</Text>
                 </Text>
                 <View style={styles.viewForm}>
                     <Text style={styles.errorMsg}>{errorMsg}</Text>
-                    <TextInput style={styles.textInput}
-                        onChangeText={setEmail}
-                        value={email}
-                        placeholder="Email"
-                    />
-                    <TextInput style={styles.textInput}
-                        onChangeText={setPass}
-                        value={pass}
-                        placeholder="Password"
-                        secureTextEntry={true}
-                    />
+                    <View style={styles.inputView}>
+                        <MaterialIcons name='mail' size={26} color='#6360FF' style={styles.icon}/>
+                        <TextInput style={styles.textInput}
+                            onChangeText={setEmail}
+                            value={email}
+                            placeholder="Email"
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <MaterialIcons name='lock' size={26} color='#6360FF' style={styles.icon}/>
+                        <TextInput style={styles.textInput}
+                            onChangeText={setPass}
+                            value={pass}
+                            placeholder="Password"
+                            secureTextEntry={true}
+                        />
+                    </View>
                     <FlatButton
                         title='SIGN IN'
                         color='blue'
@@ -136,6 +142,7 @@ const styles = StyleSheet.create ({
     welcome: {
         color: '#4632A1',
         fontSize: 32,
+        marginBottom: 5,
     },
     registernow: {
         color: 'red',
@@ -143,7 +150,7 @@ const styles = StyleSheet.create ({
         fontWeight: 'bold',
     },
     viewForm: {
-        marginTop: 30,
+        marginTop: 25,
     },
     errorMsg: {
         color: 'red',
@@ -151,15 +158,25 @@ const styles = StyleSheet.create ({
         fontWeight: '500'
     },
     textInput: {
+        flex: 1,
         height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        backgroundColor: '#FCFCFF'
+        padding: 5,
       },
+    inputView: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomColor: 'blue',
+        borderBottomWidth: 0.3,
+        marginBottom: 20
+    },
+    icon: {
+        padding: 10
+    },
     rememberPass: {
         height: 50,
-        marginTop: 20,
+        marginTop: 10,
         flexDirection: 'row',
     },
     button: {
@@ -167,7 +184,7 @@ const styles = StyleSheet.create ({
         flexDirection: 'row',
         marginTop: 20,
         marginHorizontal: -20
-    }
+    },
 });
 
 export default LoginScreen;

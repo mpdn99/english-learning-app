@@ -7,7 +7,7 @@ import auth from '@react-native-firebase/auth';
 import SignInWithFacebook from '../services/SignInWithFacebook';
 import SignInWithGoogle from '../services/SignInWithGoogle';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({navigation}) => {
 
     const [namecalled, onChangeNameCalled] = React.useState(null);
     const [email, onChangeEmail] = React.useState(null);
@@ -41,26 +41,38 @@ const SignUpScreen = () => {
             <View style={styles.bottomView}>
                 <Text style={styles.welcome}>Welcome</Text>
                 <View style={styles.viewForm}>
-                    <TextInput style={styles.textInput}
-                        onChangeText={onChangeNameCalled}
-                        value={namecalled}
-                        placeholder="What should we call you?"
-                    />
-                    <TextInput style={styles.textInput}
-                        onChangeText={onChangeEmail}
-                        value={email}
-                        placeholder="Email"
-                    />
-                    <TextInput style={styles.textInput}
-                        onChangeText={onChangePass}
-                        value={pass}
-                        placeholder="Password"
-                    />
-                    <TextInput style={styles.textInput}
-                        onChangeText={onChangeConfirmPass}
-                        value={confirmpass}
-                        placeholder="Confirm Password"
-                    />
+                    <View style={styles.inputView}>
+                        <MaterialIcons name='person' size={26} color='#6360FF' style={styles.icon}/>
+                        <TextInput style={styles.textInput}
+                            onChangeText={onChangeNameCalled}
+                            value={namecalled}
+                            placeholder="What should we call you?"
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <MaterialIcons name='mail' size={26} color='#6360FF' style={styles.icon}/>
+                        <TextInput style={styles.textInput}
+                            onChangeText={onChangeEmail}
+                            value={email}
+                            placeholder="Email"
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <MaterialIcons name='lock' size={26} color='#6360FF' style={styles.icon}/>
+                        <TextInput style={styles.textInput}
+                            onChangeText={onChangePass}
+                            value={pass}
+                            placeholder="Password"
+                        />
+                    </View>
+                    <View style={styles.inputView}>
+                        <MaterialIcons name='preview' size={26} color='#6360FF' style={styles.icon}/>
+                        <TextInput style={styles.textInput}
+                            onChangeText={onChangeConfirmPass}
+                            value={confirmpass}
+                            placeholder="Confirm Password"
+                        />
+                    </View>
                     <FlatButton
                         title='SIGN UP'
                         color='#6360FF'
@@ -82,6 +94,11 @@ const SignUpScreen = () => {
                         onPress={SignInWithFacebook}
                     />
                 </View>
+                <Text style={{alignSelf: 'center', marginTop: 10}}
+                    onPress={() => navigation.navigate('Login')}
+                >You have an account?{' '}
+                    <Text style={styles.signInText}>Sign in now</Text>
+                </Text>
             </View>
         </View>
     );
@@ -118,19 +135,34 @@ const styles = StyleSheet.create ({
     viewForm: {
         marginTop: 30,
     },
-    textInput: {
-        height: 40,
-        margin: 12,
-        borderWidth: 1,
-        padding: 10,
-        backgroundColor: '#FCFCFF'
-      },
     button: {
         justifyContent: 'space-between',
         flexDirection: 'row',
         marginTop: 10,
         marginHorizontal: -20
-    }
+    },
+    signInText: {
+        color: 'red',
+        fontWeight: 'bold',
+        fontStyle: 'italic'
+    },
+    textInput: {
+        flex: 1,
+        height: 40,
+        padding: 5,
+      },
+    inputView: {
+        flexDirection: 'row',
+        alignSelf: 'center',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderBottomColor: 'blue',
+        borderBottomWidth: 0.3,
+        marginBottom: 20
+    },
+    icon: {
+        padding: 10
+    },
 });
 
 export default SignUpScreen;
