@@ -13,8 +13,7 @@ import TestScreen from '../screens/TestScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingScreen from '../components/SettingScreen';
 import AboutScreen from '../screens/AboutScreen';
-import ContactSCreen from '../screens/ContactScreen';
-
+import ContactScreen from '../screens/ContactScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
@@ -53,7 +52,7 @@ const AppNavigation = () => {
                         <Stack.Screen name="Reading" component={ReadingScreen}/>
                         <Stack.Screen name="Setting" component={SettingScreen}/>
                         <Stack.Screen name="About" component={AboutScreen}/>
-                        <Stack.Screen name="Contact" component={ContactSCreen}/>
+                        <Stack.Screen name="Contact" component={ContactScreen}/>
                     </>
 
                 )} 
