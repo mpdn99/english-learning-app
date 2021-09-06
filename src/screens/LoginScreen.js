@@ -87,10 +87,7 @@ const LoginScreen = ({navigation}) => {
                             secureTextEntry={true}
                         />
                     </View>
-                    {isFieldInError('pass') &&
-                        getErrorsInField('pass').map(errorMessage => (
-                            <Text style={styles.errorMsg}>{errorMessage}</Text>
-                        ))}
+                    
                     <FlatButton
                         title='SIGN IN'
                         color='blue'
@@ -144,7 +141,7 @@ const LoginScreen = ({navigation}) => {
 const styles = StyleSheet.create ({
     scrollView: {
         flex: 1,
-        backgroundColor: '#F1F1FA'
+        backgroundColor: 'white'
     },
     topView: {
         flex: 1,
@@ -153,7 +150,7 @@ const styles = StyleSheet.create ({
     },
     bottomView: {
         flex: 1.5,
-        backgroundColor: '#F1F1FA',
+        backgroundColor: 'white',
         padding: 40,
         borderTopStartRadius: 50,
         borderTopEndRadius: 50,
