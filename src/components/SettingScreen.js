@@ -24,7 +24,7 @@ const SettingScreen = ({navigation}) => {
               navigation={navigation}
             />
             <SettingAction
-              name='FAQ & Contact'
+              name='Contact'
               screen='Contact'
               navigation={navigation}
             />

@@ -6,7 +6,7 @@ const ContactSCreen = ({navigation}) => {
   return (
       <SafeAreaView style={styles.screenContainer}>
           <ReturnScreen
-                title='FAQ & Contact'
+                title='Contact us'
                 screen='Setting'
                 navigation={navigation}
           />
