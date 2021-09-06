@@ -3,14 +3,15 @@ import {StyleSheet, View, Text, Dimensions, SafeAreaView, Image, Pressable, Aler
 import { ScrollView } from 'react-native-gesture-handler';
 import ReturnScreen from '../components/ReturnScreen';
 import { WebView } from 'react-native-webview';
+import OpenWebView from '../components/OpenWebView';
 
 const AboutScreen = ({navigation}) => {
   
-  const learnMore = () => {
-    <WebView
-      source={{ uri: 'https://istech.vn/'}}
-    />
-  }
+  // const learnMore = () => {
+  //   <WebView
+  //     source={{ uri: 'https://istech.vn/'}}
+  //   />
+  // }
   
   return (
       <ScrollView style={styles.screenContainer}>
@@ -32,7 +33,7 @@ const AboutScreen = ({navigation}) => {
             />
             <Text style={styles.textStyle}>     ISTECH được thành lập từ các bạn sinh viên có đam mê về nghiên cứu khoa học nói chung, là các đại diện đến từ các ngành học khác nhau, từ đó, trong tương lai sẽ giúp CLB phát huy hết tiềm năng của các thành viên trong BTC, cũng như nắm bắt được xu hướng, mức độ quan tâm chung của sinh viên, thành viên tham gia ISTECH. CLB hoạt động dựa trên nguyên tắc tự nguyện tham gia của các thành viên, dân chủ trong hoạt động và quản lý tập trung.</Text>
             <Pressable
-              onPress={() => Alert.alert('Open Web ISTECH')}
+              onPress={OpenWebView}
             >
               <Text style={[styles.textStyle, {marginTop: 20, textDecorationLine: 'underline'}]}>Learn more</Text>
             </Pressable>
