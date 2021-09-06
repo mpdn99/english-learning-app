@@ -2,9 +2,9 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const ReturnProfileScreen = ({navigation, title}) => {
+const ReturnScreen = ({navigation, title, screen}) => {
     const Back = () => {
-        navigation.navigate('Profile');
+        navigation.navigate(screen);
     }
     return (
         <View style={styles.bar}>
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     }
 })
-export default ReturnProfileScreen;
+export default ReturnScreen;

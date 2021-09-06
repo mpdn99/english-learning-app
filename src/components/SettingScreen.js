@@ -1,15 +1,15 @@
 import React from 'react';
 import {StyleSheet, View, Text, Dimensions, SafeAreaView} from 'react-native';
-import ReturnProfileScreen from './ReturnProfileScreen';
 import SettingAction from './SettingAction';
-import auth from '@react-native-firebase/auth';
 import SignOutButton from './SignOutButton';
+import ReturnScreen from './ReturnScreen';
 
 const SettingScreen = ({navigation}) => {
   return (
       <SafeAreaView style={styles.screenContainer}>
-          <ReturnProfileScreen
+          <ReturnScreen
                 title='Setting'
+                screen='Profile'
                 navigation={navigation}
           />
           <View style={styles.bodyContainer}>
@@ -18,8 +18,16 @@ const SettingScreen = ({navigation}) => {
             <SettingAction name='Learning Reminder'/>
             <SignOutButton/>
             <Text style={styles.partDivide}>Suppport</Text>
-            <SettingAction name='About'/>
-            <SettingAction name='FAQ'/>
+            <SettingAction
+              name='About'
+              screen='About'
+              navigation={navigation}
+            />
+            <SettingAction
+              name='FAQ & Contact'
+              screen='Contact'
+              navigation={navigation}
+            />
             <SettingAction name='Share'/>
           </View>
       </SafeAreaView>

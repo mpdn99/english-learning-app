@@ -12,6 +12,8 @@ import TestQuizzScreen from '../screens/TestQuizzScreen';
 import TestScreen from '../screens/TestScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingScreen from '../components/SettingScreen';
+import AboutScreen from '../screens/AboutScreen';
+import ContactSCreen from '../screens/ContactScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +52,8 @@ const AppNavigation = () => {
                         <Stack.Screen name="Listening" component={AudioplaylistScreen}/>
                         <Stack.Screen name="Reading" component={ReadingScreen}/>
                         <Stack.Screen name="Setting" component={SettingScreen}/>
+                        <Stack.Screen name="About" component={AboutScreen}/>
+                        <Stack.Screen name="Contact" component={ContactSCreen}/>
                     </>
 
                 )} 
