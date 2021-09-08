@@ -4,8 +4,12 @@ import SettingAction from './SettingAction';
 import SignOutButton from './SignOutButton';
 import ReturnScreen from './ReturnScreen';
 import ShareButton from './ShareButton';
+import SendFeedback from './SendFeedback';
 
 const SettingScreen = ({navigation}) => {
+
+  const feedback = "mailto: 6aalhp@gmail.com"
+
   return (
       <SafeAreaView style={styles.screenContainer}>
           <ReturnScreen
@@ -24,12 +28,11 @@ const SettingScreen = ({navigation}) => {
               screen='About'
               navigation={navigation}
             />
-            <SettingAction
-              name='Contact'
-              screen='Contact'
-              navigation={navigation}
-            />
+            
             <ShareButton/>
+            <SendFeedback
+              url={feedback}
+            />
           </View>
       </SafeAreaView>
   );
