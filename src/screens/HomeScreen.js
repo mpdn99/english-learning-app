@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text, StatusBar, ScrollView, Dimensions, Image, SafeAreaView, TouchableOpacity} from 'react-native';
+import {StyleSheet, View, Text, StatusBar, Dimensions, Image, SafeAreaView, TouchableOpacity} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import CourseCard from '../components/CourseCard';
 import CurrentProcessBox from '../components/CurrentProcessBox';
@@ -9,6 +9,7 @@ const HomeScreen = ({navigation}) => {
   const user = auth().currentUser;
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
+      <StatusBar animated={true} backgroundColor= '#6360FF'/>
       <View style={styles.topView}>
         <View style={styles.avatarContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('Profile')}>

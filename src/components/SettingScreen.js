@@ -3,6 +3,7 @@ import {StyleSheet, View, Text, Dimensions, SafeAreaView} from 'react-native';
 import SettingAction from './SettingAction';
 import SignOutButton from './SignOutButton';
 import ReturnScreen from './ReturnScreen';
+import ShareButton from './ShareButton';
 
 const SettingScreen = ({navigation}) => {
   return (
@@ -28,7 +29,7 @@ const SettingScreen = ({navigation}) => {
               screen='Contact'
               navigation={navigation}
             />
-            <SettingAction name='Share'/>
+            <ShareButton/>
           </View>
       </SafeAreaView>
   );

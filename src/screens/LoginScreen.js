@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, Button, Alert} from 'react-native';
+import {StyleSheet, View, Text, StatusBar, Dimensions, TextInput, CheckBox, Button, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
 import { Checkbox } from 'react-native-paper';
@@ -59,6 +59,7 @@ const LoginScreen = ({navigation}) => {
     
     return (
         <View style={styles.scrollView} showsVerticalScrollIndicator={false}>
+            <StatusBar animated={true} backgroundColor= '#6360FF'/>
             <View style={styles.topView}></View>
             <View style={styles.bottomView}>
                 <Text style={styles.welcome}>Welcome</Text>

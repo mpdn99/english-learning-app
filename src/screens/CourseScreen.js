@@ -21,6 +21,7 @@ const CourseScreen = ({navigation}) => {
   }
   return (
     <SafeAreaView style={styles.screenContainer}>
+      <StatusBar animated={true} backgroundColor= '#6360FF'/>
       <HeaderBar title="My Courses" navigation={navigation}/>
       <View style={styles.bodyContainer}>
         <View style={styles.tabBtn}>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {StyleSheet, Text, View, TextInput, Dimensions, SafeAreaView} from 'react-native';
+import {StyleSheet, Text, View, TextInput, Dimensions, SafeAreaView, StatusBar} from 'react-native';
 import ReturnScreen from '../components/ReturnScreen';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
@@ -11,6 +11,7 @@ const ContactScreen = ({navigation}) => {
 
   return (
       <SafeAreaView style={styles.screenContainer}>
+          <StatusBar animated={true} backgroundColor= '#6360FF'/>
           <ReturnScreen
                 title='Contact us'
                 screen='Setting'
