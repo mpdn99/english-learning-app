@@ -21,6 +21,7 @@ const CourseScreen = ({navigation}) => {
   }
   return (
     <SafeAreaView style={styles.screenContainer}>
+      <StatusBar animated={true} backgroundColor= '#6360FF'/>
       <HeaderBar title="My Courses" navigation={navigation}/>
       <View style={styles.bodyContainer}>
         <View style={styles.tabBtn}>
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6360FF'
   },
   bodyContainer: {
-    backgroundColor: '#F1F1FA',
+    backgroundColor: 'white',
     borderTopStartRadius:20,
     borderTopEndRadius:20,
     flex: 2

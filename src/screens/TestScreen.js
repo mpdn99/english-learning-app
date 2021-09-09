@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     flex: 2,
-    backgroundColor: '#F1F1FA',
+    backgroundColor: 'white',
     borderTopStartRadius: 20,
     borderTopEndRadius: 20,
     paddingTop: 20

@@ -20,7 +20,7 @@ const SignUpScreen = ({navigation}) => {
     const { validate, isFieldInError, getErrorsInField, getErrorMessages } = 
         useValidation({
             state: {
-                email, pass, confirmpass
+                namecalled, email, pass, confirmpass
             }
         });
 
@@ -43,6 +43,7 @@ const SignUpScreen = ({navigation}) => {
             console.error(error);
         });
         validate({
+            namecalled: { required: true },
             email: {email: true, required: true},
             pass: { minlengthpass: 7, required: true },
             confirmpass: { equalPassword: pass }
@@ -100,11 +101,10 @@ const SignUpScreen = ({navigation}) => {
                             placeholder="Confirm Password"
                         />
                     </View>
-
-                    {/* {isFieldInError('confirmpass') &&
+                    {isFieldInError('confirmpass') &&
                         getErrorsInField('confirmpass').map(errorMessage => (
                             <Text style={styles.errorMsg}>{errorMessage}</Text>
-                    ))} */}
+                    ))}
 
                     <FlatButton
                         title='SIGN UP'

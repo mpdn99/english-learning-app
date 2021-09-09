@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dimensions } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const SettingButton = ({navigation, screen, skill, icon, color}) => {
+const SettingButton = ({navigation, screen}) => {
     const goTo = () => {
         navigation.navigate(screen);
     }

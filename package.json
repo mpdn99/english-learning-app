@@ -36,7 +36,10 @@
     "react-native-select-dropdown": "^1.1.0",
     "react-native-sound": "^0.11.1",
     "react-native-sound-player": "^0.11.1",
-    "react-native-vector-icons": "^8.1.0"
+    "react-native-vector-icons": "^8.1.0",
+    "react-native-share": "^7.0.2",
+    "react-native-vector-icons": "^8.1.0",
+    "react-native-webview": "^11.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

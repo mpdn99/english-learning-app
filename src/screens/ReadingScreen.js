@@ -4,6 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ReturnTestScreen from '../components/ReturnTestScreen';
 import LinearGradient from 'react-native-linear-gradient';
 import DropDownPicker from 'react-native-dropdown-picker';
+import AnswerCardReading from '../components/AnswerCardReading';
 
 const ReadingScreen = ({navigation}) => {
 
@@ -59,7 +60,9 @@ const ReadingScreen = ({navigation}) => {
             setValue={setValue}
             setItems={setItems}
           />
+          <AnswerCardReading/>
           <MaterialIcons name='lightbulb' size={30} color='#6360FF'/>
+          <View style={{marginHorizontal: 5}}></View>
           <Text style={{fontSize: 30, color: '#6360FF'}}>Aa</Text>
         </LinearGradient>
       </View>
@@ -108,15 +111,15 @@ const styles = StyleSheet.create({
   },
   bottomMenu: {
     paddingVertical: 30,
-    paddingHorizontal: 50,
+    paddingHorizontal: 120,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   chooseChap: {
-    width: 250,
+    width: 120,
     height: 70,
-    paddingHorizontal: 80,
+    paddingHorizontal: 20,
     borderColor: '#6360FF',
     borderWidth: 1.5,
     backgroundColor: '#D2DFFF'

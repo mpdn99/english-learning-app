@@ -181,6 +181,7 @@ const YourNotebookDetail = ({note, setNote}) => {
     return (
       <View style={styles.noteView}
                   showsVerticalScrollIndicator={false}>
+        <StatusBar animated={true} backgroundColor= '#6360FF'/>
         <TextInput
             style={styles.textNote}
             multiline
