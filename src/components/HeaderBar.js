@@ -4,7 +4,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const HeaderBar = ({navigation, title}) => {
     const Back = () => {
-        navigation.navigate('Home');
+        navigation.goBack();
     }
     return (
         <View style={styles.bar}>
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     headerTitle: {
         color: 'white',
         alignSelf: 'center',
-        fontSize: 20
+        fontSize: 20,
     },
     backbtn: {
         alignSelf: 'center'

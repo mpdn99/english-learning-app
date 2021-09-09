@@ -5,10 +5,7 @@ const SectionName = ({section, topic, min, part}) => {
     return (
         <View style={styles.viewform}>
             <Text style={styles.topText}>
-                Section{section}: {topic}
-            </Text>
-            <Text style={styles.bottomText}>
-                {part}{' '}Unit{'  '}o{'  '}{min}{' '}min
+                Part {section}: {topic}
             </Text>
         </View>
     );

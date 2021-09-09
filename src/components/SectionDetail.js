@@ -1,29 +1,63 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
-import { Checkbox } from "react-native-paper";
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import AnswerCard from "./AnswerCard";
 
-const SectionDetail = ({section, topic, min}) => {
-    
+const SectionDetail = ({section, topic, answer1, answer2, answer3, answer4, value1, value2, value3, value4}) => {
     const[isSelected, setSelection] = React.useState(null);
+    const[checked, setChecked] = useState(null);
+    const[done, setDone] = useState(null);
+    const[show, setShow] = useState(false);
 
+    useEffect(() => {
+        if(checked!=null){
+            setDone('Completed')
+        }else{
+            setDone('Incompleted')
+        }  
+    }, [checked])
+
+    const dropDown = () => {
+        setShow(!show);
+    }
     return (
-        <View style={styles.viewform}>
-            <View style={styles.viewform2}>
-                <Text style={styles.topText}>
-                    {section}.{' '}{topic}
-                </Text>
-                <Text style={styles.bottomText}>
-                    Video{'  '}o{'  '}{min}{' '}min
-                </Text>
-            </View>
-            <Checkbox.Android
-                status={isSelected ? 'checked' : 'unchecked'}
-                onPress={() => {
-                setSelection(!isSelected);
-                }}
-                color={'#FF8181'}
-            />
-        </View>
+        <>
+            <TouchableOpacity style={styles.viewform} onPress={dropDown}>
+                <View style={styles.viewform2}>
+                    <Text style={styles.topText}>
+                        {section}.{' '}{topic}
+                    </Text>
+                    <Text style={styles.bottomText}>
+                        {done}
+                    </Text>
+                </View>
+                {
+                    show?(
+                        <MaterialIcons name='chevron-left' size={26} style={{marginRight: 20}}/>
+                    ):(
+                        <MaterialIcons name='expand-more' size={26} style={{marginRight: 20}}/>
+                    )
+                }
+            </TouchableOpacity>
+            {
+                show?(
+                    <View style={{marginLeft: 10}}>
+                        <AnswerCard 
+                            title1={answer1}
+                            title2={answer2}
+                            title3={answer3}
+                            title4={answer4}
+                            value1={value1}
+                            value2={value2}
+                            value3={value3}
+                            value4={value4}
+                            checked={checked}
+                            setChecked={setChecked}
+                        />
+                    </View>
+                ): (null)
+            }
+        </>
     );
 }
 

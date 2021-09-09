@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import CourseScreen from '../screens/CourseScreen';
 import TestScreen from '../screens/TestScreen';
 import TestQuizzScreen from '../screens/TestQuizzScreen';
+import ChangeProfileScreen from '../screens/ChangeProfileScreen';
 
 import ProfileScreen from '../screens/ProfileScreen';
 

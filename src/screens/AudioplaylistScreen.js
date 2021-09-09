@@ -5,6 +5,10 @@ import SectionDetail from '../components/SectionDetail';
 import SectionName from '../components/SectionName';
 // import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import V2ReturnTestScreen from '../components/V2ReturnTestScreen';
+import AudioPlayer from '../components/AudioPlayer';
+import data from '../data/tests.json'
+import { Item } from 'react-native-paper/lib/typescript/components/List/List';
+
 
 const AudioplaylistScreen = ({navigation}) => {
   const [ShowCourseContentView, setCourseContentView] = useState(true);
@@ -12,6 +16,8 @@ const AudioplaylistScreen = ({navigation}) => {
   const [textColor2, setTextColor2] = useState('#91919F');
   const [brgColor1, setBgrdColor1] = useState('white');
   const [brgColor2, setBgrdColor2] = useState('#F1F1FA');
+  const [note, setNote] = useState();
+
 
   const CourseContentView = () => {
     setCourseContentView(true);
@@ -30,18 +36,11 @@ const AudioplaylistScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <V2ReturnTestScreen
-        title='1. Introduction'
+        title='1. Part 1'
         navigation={navigation}
       />
       <View style={styles.video}>
-        <Image
-            style={{
-                resizeMode: 'contain',
-                width: Dimensions.get('window').width,
-                height: 130,
-            }}
-            source={require('../images/videoIMG.jpg')}
-        />
+        <AudioPlayer/>
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.tabBtn}>
@@ -57,7 +56,7 @@ const AudioplaylistScreen = ({navigation}) => {
           </TouchableOpacity>
         </View>
 
-        {ShowCourseContentView? <CourseContentDetail/> : <YourNotebookDetail/>}
+        {ShowCourseContentView? <CourseContentDetail/> : <YourNotebookDetail note={note} setNote={setNote}/>}
 
       </View>
     </SafeAreaView>
@@ -67,19 +66,60 @@ const AudioplaylistScreen = ({navigation}) => {
 const CourseContentDetail = () => {
     return (
         <ScrollView>
-          <SectionName
+          {
+            data.tests.map((tests) => [
+              tests.part.map((part, index) => {
+                return(
+                  <View key={part.id}>
+                    <SectionName
+                      section={index+1}
+                      topic={part.title}
+                    />
+                    {
+                      part.question.map((question, index) => {
+                        return(
+                          <SectionDetail
+                          key={question.id}
+                          section={index+1}
+                          topic={question.title}
+                          answer1={question.answer[0].title}
+                          answer2={question.answer[1].title}
+                          answer3={question.answer[2].title}
+                          answer4={question.answer[3].title}
+                          value1={question.answer[0].id}
+                          value2={question.answer[1].id}
+                          value3={question.answer[2].id}
+                          value4={question.answer[3].id}
+                        />
+                        )
+                      })
+                    }
+                    <View style={styles.lineStyle}></View>
+                  </View>
+                )
+              })
+            ])
+          }
+          {/* <SectionName
             section='1'
-            topic='Introduction'
-            part='3/5'
-            min='10'
+            topic={data.tests[0].part[0].title}
+            // part='3/5'
+            // min='10'
           />
           <SectionDetail
             section='1'
-            topic='say hello'
-            min='9'
+            topic={data.tests[0].part[0].question[0].title}
+            answer1={data.tests[0].part[0].question[0].answer[0].title}
+            answer2={data.tests[0].part[0].question[0].answer[1].title}
+            answer3={data.tests[0].part[0].question[0].answer[2].title}
+            answer4={data.tests[0].part[0].question[0].answer[3].title}
+            value1={data.tests[0].part[0].question[0].answer[0].id}
+            value2={data.tests[0].part[0].question[0].answer[1].id}
+            value3={data.tests[0].part[0].question[0].answer[2].id}
+            value4={data.tests[0].part[0].question[0].answer[3].id}
           />
           <SectionDetail
-            section='1'
+            section='2'
             topic='say hello'
             min='9'
           />
@@ -132,12 +172,12 @@ const CourseContentDetail = () => {
             topic='say hello'
             min='9'
           />
-          <View style={styles.lineStyle}></View>
+          <View style={styles.lineStyle}></View> */}
         </ScrollView>
     );
 }
 
-const YourNotebookDetail = () => {
+const YourNotebookDetail = ({note, setNote}) => {
     return (
       <View style={styles.noteView}
                   showsVerticalScrollIndicator={false}>
@@ -145,7 +185,10 @@ const YourNotebookDetail = () => {
             style={styles.textNote}
             multiline
             editable
-            placeholder='Note: ' >
+            placeholder='Note: ' 
+            onChangeText={setNote}
+            value={note}
+            >
         </TextInput>
       </View>
     );
@@ -189,6 +232,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderTopStartRadius: 15,
     borderTopEndRadius: 15,
+    padding: 20
   },
   tabMenu: {
     height: 60,

@@ -96,7 +96,7 @@ const LoginScreen = ({navigation}) => {
                         color='blue'
                         onPress={SignInWithMail}
                         long={140}
-                        color='#6360FF'
+                        // color='#6360FF'
                         pressed='SIGN IN'
                         long={100}
                     />
@@ -114,7 +114,7 @@ const LoginScreen = ({navigation}) => {
                             </View>
                             <Text style={{}}>Remember</Text> */}
                         </View>
-                        <Text onPress={() => navigation.push('ForgotPass')}>Forgot Password</Text>
+                        <Text onPress={() => navigation.push('ForgotPass')}>Forgot Password?</Text>
                     </View>
                 </View>
                 <Text style={{alignSelf: 'center', marginTop: -20}}>Or</Text>
@@ -129,7 +129,7 @@ const LoginScreen = ({navigation}) => {
                     <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
-                        color='blue'
+                        // color='blue'
                         onPress={SignInWithFacebook}
                         color='#6360FF'
                         pressed='FB'

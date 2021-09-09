@@ -3,8 +3,6 @@ import {StyleSheet, View, Text, ScrollView, Dimensions, TextInput, CheckBox, But
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from '../components/FlatButton';
 import { Checkbox } from 'react-native-paper';
-import SignInWithFacebook from '../services/SignInWithFacebook';
-import SignInWithGoogle from '../services/SignInWithGoogle';
 import auth from '@react-native-firebase/auth';
 
 const ForgotPassScreen = ({navigation}) => {
@@ -13,9 +11,11 @@ const ForgotPassScreen = ({navigation}) => {
 
     const [errorMsg, setErrorMsg] = useState(null);
 
-    const SignInWithMail = () => {
+    const requestResetPass = () => {
+
         auth()
-        .signInWithEmailAndPassword(email, pass)
+        .sendPasswordResetEmail(email)
+        .then(setErrorMsg('A password reset message was sent to your mail address. Please check your mail and following the instruction.'))
         .catch(error => {
             if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
                 setErrorMsg('Incorrect username or password.');
@@ -43,10 +43,10 @@ const ForgotPassScreen = ({navigation}) => {
                     <FlatButton
                         title='Request reset link'
                         color='blue'
-                        // onPress={SignInWithMail}
+                        onPress={requestResetPass}
                         long={140}
                         color='#6360FF'
-                        pressed='SIGN IN'
+                        pressed='REQUEST RESET LINK'
                         long={100}
                     />
                     <Text style={styles.backToLogin} onPress={() => navigation.goBack()}>Back to Login</Text>
@@ -119,7 +119,7 @@ const styles = StyleSheet.create ({
     backToLogin: {
         textAlign: 'center',
         color: 'blue',
-        margin: 5
+        margin: 10
     }
 });
 
