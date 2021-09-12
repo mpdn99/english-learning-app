@@ -20,7 +20,7 @@ const SettingScreen = ({navigation}) => {
           <View style={styles.bodyContainer}>
             <Text style={styles.partDivide}>Account Settings</Text>
             <SettingAction name='Account' navigation={navigation} screen="EditProfile"/>
-            <SettingAction name='Learning Reminder'/>
+            {/* <SettingAction name='Learning Reminder'/> */}
             <SignOutButton/>
             <Text style={styles.partDivide}>Suppport</Text>
             <SettingAction

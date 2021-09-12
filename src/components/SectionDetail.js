@@ -4,7 +4,6 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AnswerCard from "./AnswerCard";
 
 const SectionDetail = ({section, topic, answer1, answer2, answer3, answer4, value1, value2, value3, value4}) => {
-    const[isSelected, setSelection] = React.useState(null);
     const[checked, setChecked] = useState(null);
     const[done, setDone] = useState(null);
     const[show, setShow] = useState(false);

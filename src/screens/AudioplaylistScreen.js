@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, KeyboardAvoidingView} from 'react-native';
+import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, KeyboardAvoidingView, StatusBar} from 'react-native';
 import CourseCard from '../components/CourseCard';
 import SectionDetail from '../components/SectionDetail';
 import SectionName from '../components/SectionName';
@@ -8,6 +8,7 @@ import V2ReturnTestScreen from '../components/V2ReturnTestScreen';
 import AudioPlayer from '../components/AudioPlayer';
 import data from '../data/tests.json'
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
+import FlatButton from '../components/FlatButton';
 
 
 const AudioplaylistScreen = ({navigation}) => {
@@ -36,7 +37,7 @@ const AudioplaylistScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <V2ReturnTestScreen
-        title='1. Part 1'
+        title='1. Test 1'
         navigation={navigation}
       />
       <View style={styles.video}>
@@ -173,6 +174,7 @@ const CourseContentDetail = () => {
             min='9'
           />
           <View style={styles.lineStyle}></View> */}
+          <FlatButton color="#6360FF" long={30} title="SUBMIT" />
         </ScrollView>
     );
 }
