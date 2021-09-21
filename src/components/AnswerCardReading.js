@@ -3,13 +3,25 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions } from "rea
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const AnswerCardReading = ({value, questions}) => {
+const AnswerCardReading = ({value}) => {
 
   const [modalVisible, setModalVisible] = useState(false);
-  if (value == 1) {
-    questions = 'hehe, question 1 here'
-  } else if (value == 2) {
-    questions = 'and here is the set of question 2'
+  
+  const Questions = () => {
+    if (value == 1) {
+      return (
+        <View>
+          <Text>Hehe, here is the set of question 1</Text>
+        </View>
+      )
+    } else if (value == 2) {
+      return (
+        <View>
+          <Text>And here is question 2</Text>
+        </View>
+      )
+    }
+    return null;
   }
 
   return (
@@ -29,7 +41,7 @@ const AnswerCardReading = ({value, questions}) => {
                 <View style={styles.modalView}>
 
 
-                <Text>{questions}</Text>
+                <Questions/>
 
 
                   <View style={{flexDirection: "column-reverse", flex: 1, alignItems: "center"}}>
