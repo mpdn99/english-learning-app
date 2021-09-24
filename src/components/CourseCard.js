@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
 
-const CourseCard = ({title, category, onPress}) => {
+const CourseCard = ({title, category, onPress, color}) => {
     return (
         <TouchableOpacity
-            style={styles.courseCard}
+            style={[styles.courseCard, {borderColor: color}]}
             onPress={onPress}
         >
             <Image source={require('../images/Frame24.png')} style={{height: 60, width: 60, marginRight: 15, borderRadius: 15}}></Image>
@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 15,
         margin: 10,
+        borderWidth: 1
 
     }
 })

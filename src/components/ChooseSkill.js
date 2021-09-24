@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Button } from 'react-native-paper';
 import { Dimensions, StyleSheet, Text} from 'react-native';
 
-const ChooseSkill = ({navigation, screen, skill, icon, color}) => {
+const ChooseSkill = ({navigation, screen, skill, icon, color, params}) => {
     const goTo = () => {
-        navigation.navigate(screen);
+        navigation.navigate(screen, params);
     }
     return (
         <Button

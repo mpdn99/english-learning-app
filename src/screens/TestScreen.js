@@ -15,11 +15,11 @@ const TestScreen = ({navigation}) => {
                       fontWeight: 'bold',
                       marginVertical: 20,
                       marginHorizontal: Dimensions.get('window').width*1/7}}
-        >Available Test</Text>
+        >Do test</Text>
         <ChooseSkill
           skill='Listening Skill'
           navigation={navigation}
-          screen='Listening'
+          screen='ListTest'
           icon='face'
           color='blue'
         />

@@ -14,7 +14,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import SettingScreen from '../components/SettingScreen';
 import ForgotPassScreen from '../screens/ForgotPassScreen';
 import ChangeProfileScreen from '../screens/ChangeProfileScreen';
-
+import ListTestScreen from '../screens/ListTestScreen';
 import AboutScreen from '../screens/AboutScreen';
 import ContactScreen from '../screens/ContactScreen';
 const Stack = createNativeStackNavigator();
@@ -52,6 +52,7 @@ const AppNavigation = () => {
                 ):(
                     <>
                         <Stack.Screen name="Main" component={BottomTabNavigator}/>
+                        <Stack.Screen name="ListTest" component={ListTestScreen}/>
                         <Stack.Screen name="Listening" component={AudioplaylistScreen}/>
                         <Stack.Screen name="Reading" component={ReadingScreen}/>
                         <Stack.Screen name="Setting" component={SettingScreen}/>

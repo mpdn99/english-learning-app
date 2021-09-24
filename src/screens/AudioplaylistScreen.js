@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, KeyboardAvoidingView, StatusBar} from 'react-native';
+import React, { useEffect, useState } from 'react';
+import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, KeyboardAvoidingView, StatusBar, FlatList, SectionList, ActivityIndicator, Alert} from 'react-native';
 import CourseCard from '../components/CourseCard';
 import SectionDetail from '../components/SectionDetail';
 import SectionName from '../components/SectionName';
@@ -9,9 +9,14 @@ import AudioPlayer from '../components/AudioPlayer';
 import data from '../data/tests.json'
 import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import FlatButton from '../components/FlatButton';
+import getTestsData from '../services/getTestsData';
+import firestore from '@react-native-firebase/firestore';
+import getPartsData from '../services/getPartsData';
+import getQuestionsData from '../services/getQuestionsData';
+import getAnswerData from '../services/getAnswerData';
 
 
-const AudioplaylistScreen = ({navigation}) => {
+const AudioplaylistScreen = ({navigation, route}) => {
   const [ShowCourseContentView, setCourseContentView] = useState(true);
   const [textColor1, setTextColor1] = useState('#161719');
   const [textColor2, setTextColor2] = useState('#91919F');
@@ -52,129 +57,94 @@ const AudioplaylistScreen = ({navigation}) => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={[styles.tabMenu, {backgroundColor: brgColor2}]}>
-              <Text style={[styles.tabBtnText, {color: textColor2}]} onPress={YourNotebookView}>Your Notebook</Text>
+              <Text style={[styles.tabBtnText, {color: textColor2}]} onPress={() => console.log(route.params)}>Your Notebook</Text>
             </View>
           </TouchableOpacity>
         </View>
 
-        {ShowCourseContentView? <CourseContentDetail/> : <YourNotebookDetail note={note} setNote={setNote}/>}
+        {ShowCourseContentView? <CourseContentDetail test_id={route.params.test_id}/> : <YourNotebookDetail note={note} setNote={setNote}/>}
 
       </View>
     </SafeAreaView>
   );
 };
 
-const CourseContentDetail = () => {
+const CourseContentDetail = ({test_id}) => {
+  const [parts, setParts] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [userAnswers, setUserAnswers] = useState([])
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await getPartsData(test_id, setParts)
+    }
+    fetchApi()
+    setLoading(false)
+  }, [])
+
+  useEffect(() => {
+    const getQuestionsDataFromPart = async () => {
+      parts.map( async (part) => {
+        await getQuestionsData(part.part_id, setQuestions)
+      })
+    }
+    getQuestionsDataFromPart()
+  }, [parts])
+
+  useEffect(() => {
+    console.log(userAnswers)
+  }, [userAnswers])
+
+  const SubmitExam = () => {
+    var point = 0;
+    userAnswers.map((ua) => {
+      point = point + ua.point
+    })
+    return(
+      Alert.alert('Total score: '+ (point/35).toFixed(1), 
+      `
+      Correct answers: ${point}
+      Wrong answers: ${35-point}
+      ` )
+    )
+  }
+
+  if (loading) {
+    return <ActivityIndicator />;
+  }
     return (
         <ScrollView>
           {
-            data.tests.map((tests) => [
-              tests.part.map((part, index) => {
-                return(
-                  <View key={part.id}>
-                    <SectionName
-                      section={index+1}
-                      topic={part.title}
-                    />
-                    {
-                      part.question.map((question, index) => {
-                        return(
-                          <SectionDetail
-                          key={question.id}
-                          section={index+1}
-                          topic={question.title}
-                          answer1={question.answer[0].title}
-                          answer2={question.answer[1].title}
-                          answer3={question.answer[2].title}
-                          answer4={question.answer[3].title}
-                          value1={question.answer[0].id}
-                          value2={question.answer[1].id}
-                          value3={question.answer[2].id}
-                          value4={question.answer[3].id}
-                        />
-                        )
-                      })
-                    }
-                    <View style={styles.lineStyle}></View>
-                  </View>
-                )
-              })
-            ])
+            parts.map((part, index) =>{
+              return(
+                <View key={index}>
+                <SectionName
+                  section={index + 1}
+                  topic={part.title}
+                />
+                  {
+                    questions.filter(q => q.part_id === part.part_id).map((question, index) => {
+                      // console.log(question.question)
+                      // const answer = answers.filter(a => a.question_id === question.question_id)
+                      // console.log(answers)
+                      return(
+                        <SectionDetail
+                        key={index}
+                        section={index + 1}
+                        topic={question.question}
+                        question={question.question_id}
+                        userAnswers={userAnswers}
+                        setUserAnswers={setUserAnswers}
+                      />
+                      )
+                    })
+                  }
+                </View>
+              )
+            })
           }
-          {/* <SectionName
-            section='1'
-            topic={data.tests[0].part[0].title}
-            // part='3/5'
-            // min='10'
-          />
-          <SectionDetail
-            section='1'
-            topic={data.tests[0].part[0].question[0].title}
-            answer1={data.tests[0].part[0].question[0].answer[0].title}
-            answer2={data.tests[0].part[0].question[0].answer[1].title}
-            answer3={data.tests[0].part[0].question[0].answer[2].title}
-            answer4={data.tests[0].part[0].question[0].answer[3].title}
-            value1={data.tests[0].part[0].question[0].answer[0].id}
-            value2={data.tests[0].part[0].question[0].answer[1].id}
-            value3={data.tests[0].part[0].question[0].answer[2].id}
-            value4={data.tests[0].part[0].question[0].answer[3].id}
-          />
-          <SectionDetail
-            section='2'
-            topic='say hello'
-            min='9'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <View style={styles.lineStyle}></View>
-          <SectionName
-            section='1'
-            topic='Introduction'
-            part='3/5'
-            min='10'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <View style={styles.lineStyle}></View>
-          <SectionName
-            section='1'
-            topic='Introduction'
-            part='3/5'
-            min='10'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <SectionDetail
-            section='1'
-            topic='say hello'
-            min='9'
-          />
-          <View style={styles.lineStyle}></View> */}
-          <FlatButton color="#6360FF" long={30} title="SUBMIT" />
+          <FlatButton color="#6360FF" long={30} title="SUBMIT" onPress={SubmitExam}/>
         </ScrollView>
     );
 }

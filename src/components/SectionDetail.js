@@ -2,19 +2,46 @@ import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import AnswerCard from "./AnswerCard";
+import AnswerRadioButton from "./AnswerRadioButton";
+import getAnswerData from "../services/getAnswerData";
+import { RadioButton } from "react-native-paper";
 
-const SectionDetail = ({section, topic, answer1, answer2, answer3, answer4, value1, value2, value3, value4}) => {
-    const[checked, setChecked] = useState(null);
+const SectionDetail = ({section, topic, question, userAnswers, setUserAnswers}) => {
     const[done, setDone] = useState(null);
     const[show, setShow] = useState(false);
+    const [answers, setAnswers] = useState([])
+    const [value, setValue] = useState();
 
     useEffect(() => {
-        if(checked!=null){
+        getAnswerData(question, setAnswers)
+    }, [])
+
+    useEffect(() => {
+        if(value!=null){
             setDone('Completed')
+            // const point = answers.map((a) => {
+            //     if(a.answer_id === value) return console.log('true')
+            // })
+            const userAnswer = [{
+                question_id: question,
+                answer_id: value,
+                point: answers.find(a => a.answer_id === value).is_correct
+            }]
+            const userAnswerExist = userAnswers.some(ua => ua.question_id === question);
+            // console.log(userAnswers)
+            if(userAnswerExist){
+                setUserAnswers(userAnswers.map((ua => {
+                    if(ua.question_id !== question) return ua
+                    return {...ua, answer_id: value, point: answers.find(a => a.answer_id === value).is_correct}
+                })))
+            }else{
+                setUserAnswers(a => a.concat(userAnswer))
+            }
+
         }else{
             setDone('Incompleted')
         }  
-    }, [checked])
+    }, [value])
 
     const dropDown = () => {
         setShow(!show);
@@ -40,20 +67,20 @@ const SectionDetail = ({section, topic, answer1, answer2, answer3, answer4, valu
             </TouchableOpacity>
             {
                 show?(
-                    <View style={{marginLeft: 10}}>
-                        <AnswerCard 
-                            title1={answer1}
-                            title2={answer2}
-                            title3={answer3}
-                            title4={answer4}
-                            value1={value1}
-                            value2={value2}
-                            value3={value3}
-                            value4={value4}
-                            checked={checked}
-                            setChecked={setChecked}
-                        />
-                    </View>
+                    <RadioButton.Group onValueChange={newValue => setValue(newValue)} value={value} style={{marginLeft: 10}}>
+                        {
+
+                            answers.map((a, index) => {
+                                return(
+                                    <AnswerRadioButton
+                                    key={index}
+                                    value={a.answer_id}
+                                    title={a.title}
+                                    />
+                                )
+                            })
+                        }
+                    </RadioButton.Group>
                 ): (null)
             }
         </>
