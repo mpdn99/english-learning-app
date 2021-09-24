@@ -8,7 +8,7 @@ import SendFeedback from './SendFeedback';
 
 const SettingScreen = ({navigation}) => {
 
-  const feedback = "mailto: 6aalhp@gmail.com"
+  const feedback = "mailto: support@istech.vn"
 
   return (
       <SafeAreaView style={styles.screenContainer}>

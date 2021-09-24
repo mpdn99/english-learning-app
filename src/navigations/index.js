@@ -17,6 +17,7 @@ import ChangeProfileScreen from '../screens/ChangeProfileScreen';
 import ListTestScreen from '../screens/ListTestScreen';
 import AboutScreen from '../screens/AboutScreen';
 import ContactScreen from '../screens/ContactScreen';
+import ResultScreen from '../screens/ResultScreen';
 const Stack = createNativeStackNavigator();
 
 const AppNavigation = () => {
@@ -59,6 +60,7 @@ const AppNavigation = () => {
                         <Stack.Screen name="EditProfile" component={ChangeProfileScreen} />
                         <Stack.Screen name="About" component={AboutScreen}/>
                         <Stack.Screen name="Contact" component={ContactScreen}/>
+                        <Stack.Screen name="Result" component={ResultScreen}/>
                     </>
 
                 )} 
