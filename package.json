@@ -39,10 +39,6 @@
     "react-native-share": "^7.0.2",
     "react-native-sound": "^0.11.1",
     "react-native-sound-player": "^0.11.1",
-<<<<<<< HEAD
-=======
-    "react-native-table-component": "^1.2.1",
->>>>>>> 2375fadce7deea7aebea347f9fb6fbfec4701842
     "react-native-vector-icons": "^8.1.0",
     "react-native-webview": "^11.13.0"
   },

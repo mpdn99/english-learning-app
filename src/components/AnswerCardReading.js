@@ -3,26 +3,9 @@ import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions } from "rea
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-const AnswerCardReading = ({value}) => {
+const AnswerCardReading = () => {
 
   const [modalVisible, setModalVisible] = useState(false);
-  
-  const Questions = () => {
-    if (value == 1) {
-      return (
-        <View>
-          <Text>Hehe, here is the set of question 1</Text>
-        </View>
-      )
-    } else if (value == 2) {
-      return (
-        <View>
-          <Text>And here is question 2</Text>
-        </View>
-      )
-    }
-    return null;
-  }
 
   return (
     <SafeAreaView>
@@ -40,18 +23,18 @@ const AnswerCardReading = ({value}) => {
                 
                 <View style={styles.modalView}>
 
+                  <Pressable
+                    style={[styles.buttonClose]}
+                    onPress={() => setModalVisible(!modalVisible)}
+                    >
+                    <MaterialIcons name="expand-more" size={30} color="white" />
+                  </Pressable>
 
-                <Questions/>
+                    {/* Content of Questions for chapter here */}
 
+                    <Text style={styles.modalText}>Questions here</Text>
+                    
 
-                  <View style={{flexDirection: "column-reverse", flex: 1, alignItems: "center"}}>
-                    <Pressable
-                      style={[styles.buttonClose]}
-                      onPress={() => setModalVisible(!modalVisible)}
-                      >
-                      <MaterialIcons name="expand-more" size={30} color="white" />
-                    </Pressable>
-                  </View>
                 </View>
                 </View>
             </Modal>
@@ -84,12 +67,12 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5,
+    elevation: 5
   },
   button: {
     borderRadius: 10,
     height: 70,
-    paddingHorizontal: 40,
+    paddingHorizontal: 25,
     marginRight: 20,
     marginLeft: -30,
   },
@@ -101,7 +84,7 @@ const styles = StyleSheet.create({
   },
   buttonClose: {
     backgroundColor: "#2196F3",
-    borderRadius: 30,
+    borderRadius: 30
   },
   textStyle: {
     color: "black",
@@ -109,8 +92,7 @@ const styles = StyleSheet.create({
   },
   modalText: {
     margin: 20,
-    textAlign: "center",
-    
+    textAlign: "center"
   }
 });
 
