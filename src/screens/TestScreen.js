@@ -33,7 +33,7 @@ const TestScreen = ({navigation}) => {
         <ChooseSkill
           skill='Writing'
           navigation={navigation}
-          screen='Result'
+          screen=''
           icon='pencil'
           color='purple'
         />
