@@ -24,6 +24,14 @@ const HomeScreen = ({navigation}) => {
             </View>
         </View>
         <MaterialIcons style={styles.notificationIcon} name='notifications' color='white' size={25} />
+        <Image
+          source={require('../images/DontKnowWhereToStart.png')}
+          resizeMode='cover'
+          style={{
+            marginTop: 20,
+            alignSelf: 'center'
+          }}
+        />
       </View>
       <View style={styles.bottomView}>
       <CurrentProcessBox photoURL={user.photoURL}/>
@@ -43,17 +51,17 @@ const styles = StyleSheet.create({
     height: Dimensions.get('window').height /1.5
   },
   bottomView: {
-    flex: 1.5,
+    flex: 1,
     backgroundColor: 'white',
     padding: 5,
-    borderTopStartRadius: 45,
-    borderTopEndRadius: 45,
+    borderTopStartRadius: 15,
+    borderTopEndRadius: 15,
     bottom: 100,
   },
   text: {
     fontSize: 15,
     fontWeight: 'bold',
-    marginTop: 100,
+    marginTop: 70,
     marginBottom: 15,
     marginLeft: 40
   },

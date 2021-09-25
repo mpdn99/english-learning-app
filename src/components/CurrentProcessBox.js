@@ -1,6 +1,8 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import FlatButton from './FlatButton'
+import {Button} from 'react-native-paper';
 
 const CurrentProcessBox = ({photoURL}) => {
     return (
@@ -8,40 +10,24 @@ const CurrentProcessBox = ({photoURL}) => {
             <View style={styles.Unknown3}>
                 <Image
                     style={styles.Unknown2}
-                    source={{uri: photoURL}}
+                    source={require('../images/Airplane.png')}
+                    resizeMode='stretch'
                 />
-                <View style={{ paddingLeft: 15 }}>
-                    <Text style={styles.Unknown1}>Declarative interfaces for any Apple Devices</Text>
-                    <Text style={{ color: 'black' }}>DR 850.000</Text>
+                <View style={{marginRight: 20, paddingLeft: -10}}>
+                    <Text style={styles.Unknown1}>We can help you</Text>
+                    {/* <FlatButton title='Find out now!' color='#8DC484' long={50} onPress={() => Alert.alert('Take a survey to get recommendation.')}/> */}
+                    <Button
+                        mode='contained'
+                        color= '#8dc484'
+                        onPress={() => Alert.alert('Take a survey to get recommendation.')}
+                        style={{
+                            marginTop: 10,
+                        }}
+                    >
+                        <Text style={{fontSize: 15, color:'white'}}>Find out now!</Text>
+                    </Button>
                 </View>
             </View>
-        
-            <View style={{flexDirection:'row',
-                          width: Dimensions.get('window').width/14*10,
-                          justifyContent: 'space-between',
-            }}>
-                <View style={styles.medalView}>
-                    <Image
-                        style={styles.medalImage}
-                        source={require('../images/medal.png')}
-                    />
-                    <View style={{ paddingLeft: 10 }}>
-                        <Text style={styles.medalText}>Current Process</Text>
-                        <Text style={{ color: 'black' }}>50%</Text>
-                    </View>
-                </View>
-                <View style={styles.medalView}>
-                    <Image
-                        style={styles.medalImage}
-                        source={require('../images/medal.png')}
-                    />
-                    <View style={{ paddingLeft: 10 }}>
-                        <Text style={styles.medalText}>Current Process</Text>
-                        <Text style={{ color: 'black' }}>50%</Text>
-                    </View>
-                </View>
-            </View>
-            <Text>here the process bar</Text>
         </View>
 
     );
@@ -49,7 +35,7 @@ const CurrentProcessBox = ({photoURL}) => {
 
 const styles = StyleSheet.create({
     viewBox: {
-        height: 180,
+        height: 100,
         width: Dimensions.get('window').width/14*11,
         backgroundColor: '#F5F5F5',
         alignItems: 'center',
@@ -57,7 +43,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         borderRadius: 15,
-        marginTop: -100
+        marginTop: -50
     },
     userName: {
         color: 'white',
@@ -76,15 +62,6 @@ const styles = StyleSheet.create({
         margin: 20,
         marginBottom: 10
     },
-    medalView: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        margin: 15,
-        marginRight: 10,
-        marginBottom: 10
-    },
     medalImage: {
         width: 25,
         height: 25,
@@ -96,13 +73,15 @@ const styles = StyleSheet.create({
     },
     Unknown1: {
         color: 'black',
-        fontSize: 15,
+        fontSize: 20,
+        alignSelf: 'center',
+        marginTop: -10
     },
     Unknown2: {
-        width: 60,
-        height: 60,
+        width: 100,
+        height: 100,
         borderRadius: 15,
-        marginRight: 10,
+        position: 'relative'
     },
     Unknown3: {
         display: 'flex',
