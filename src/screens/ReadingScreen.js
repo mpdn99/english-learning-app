@@ -5,12 +5,14 @@ import ReturnTestScreen from '../components/ReturnTestScreen';
 import LinearGradient from 'react-native-linear-gradient';
 import DropDownPicker from 'react-native-dropdown-picker';
 import AnswerCardReading from '../components/AnswerCardReading';
+import { useState, useEffect } from 'react';
+import ReadingContent from '../components/ReadingContent';
 
 const ReadingScreen = ({navigation}) => {
 
   //Dropdown Menu
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState('1');
   const [items, setItems] = React.useState([
     {label: 'Chapter 1', value: '1'},
     {label: 'Chapter 2', value: '2'},
@@ -18,7 +20,7 @@ const ReadingScreen = ({navigation}) => {
     {label: 'Chapter 4', value: '4'},
     {label: 'Chapter 5', value: '5'},
   ]);
-  /////////////////////
+  ///////////////////
 
   return (
     <SafeAreaView style={styles.screenContainer}>
@@ -26,26 +28,12 @@ const ReadingScreen = ({navigation}) => {
         <ReturnTestScreen title='Science with Craft'
                           iconColor='black'
                           navigation={navigation}/>
-        <View style={styles.chapterContainer}>
-            <View style={{ paddingLeft: 15 }}>
-              <Text style={styles.chapterNumber}>Chapter 1</Text>
-              <Text style={styles.chapterName}>Something here is a name</Text>
-            </View>
-            <MaterialIcons style={styles.bookmark} name='bookmark' size={28} color='red'/>
-        </View>
-          <ScrollView style={{marginTop: 20}}>
-            <Text style={styles.chapterContent}>
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-              Bài văn xúc động người đọc bởi cảm xúc chân thành từ chính tình cảm của con dành cho người cha tần tảo của mình. Cô giáo đã chấm cho Hậu 9,5 điểm với lời nhận xét: “Em là một người con ngoan, bài viết của em đã làm cho cô rất xúc động. Điều đáng quý nhất của em là tình cảm chân thực và em có một trái tim nhân hậu. Em đã cho cô một bài học làm người. Mong rằng đây không chỉ là trang văn mà còn là sự hành xử của em trong cuộc đời”. Được biết, thầy Lê Trần Bân, hiệu phó trường THPT Huỳnh Thúc Kháng đã đọc bài văn trong lễ chào cờ đầu tuần, trước toàn trường.
-            </Text>
-          </ScrollView>
+
+        {/* Put topics and contents in the ReadingContent component*/}
+        <ReadingContent
+          value={value}
+        />
+
         <LinearGradient
           colors={['white', '#D2DFFF']}
           style={styles.bottomMenu}>
@@ -60,10 +48,12 @@ const ReadingScreen = ({navigation}) => {
             setValue={setValue}
             setItems={setItems}
           />
-          <AnswerCardReading/>
-          <MaterialIcons name='lightbulb' size={30} color='#6360FF'/>
-          <View style={{marginHorizontal: 5}}></View>
-          <Text style={{fontSize: 30, color: '#6360FF'}}>Aa</Text>
+
+          {/* Put questions and aswers in the AnswerCardReading */}
+          <AnswerCardReading
+            value={value}
+          />
+
         </LinearGradient>
       </View>
     </SafeAreaView>
@@ -82,23 +72,6 @@ const styles = StyleSheet.create({
     borderTopEndRadius: 20,
     height: 700,
   },
-  chapterContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    margin: 20,
-    marginBottom: 10
-  },
-  chapterNumber: {
-    color: 'black',
-    fontSize: 15
-  },
-  chapterName: {
-    color: 'black',
-    fontSize: 18,
-    fontWeight: 'bold'
-  },
   bookmark: {
     alignSelf: 'center',
     marginLeft: Dimensions.get('window').width*1/3.75
@@ -111,15 +84,15 @@ const styles = StyleSheet.create({
   },
   bottomMenu: {
     paddingVertical: 30,
-    paddingHorizontal: 120,
+    paddingHorizontal: 100,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
   },
   chooseChap: {
-    width: 120,
+    width: 150,
     height: 70,
-    paddingHorizontal: 20,
+    paddingHorizontal: 35,
     borderColor: '#6360FF',
     borderWidth: 1.5,
     backgroundColor: '#D2DFFF'
