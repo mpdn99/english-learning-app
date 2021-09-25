@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { StyleSheet, Text, View, FlatList, ActivityIndicator, SafeAreaView, Dimensions, Button } from 'react-native'
-import firestore from '@react-native-firebase/firestore';
 import ChooseSkill from '../components/ChooseSkill';
 import HeaderBar from '../components/HeaderBar';
 import getTestsData from '../services/getTestsData';

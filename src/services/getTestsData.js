@@ -1,4 +1,3 @@
-import firestore from '@react-native-firebase/firestore';
 import axios from "axios";
 
 const getTestsData = (setTests, setLoading) => {

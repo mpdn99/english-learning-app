@@ -1,21 +1,22 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 
-const SectionName = ({section, topic, min, part}) => {
+const SectionName = ({section, topic, onPress}) => {
     return (
-        <View style={styles.viewform}>
+        <TouchableOpacity style={styles.viewform} onPress={onPress}>
             <Text style={styles.topText}>
                 Part {section}: {topic}
             </Text>
-        </View>
+        </TouchableOpacity>
     );
 }
 
 const styles = StyleSheet.create({
     viewform: {
         flex: 1,
-        marginLeft: 20,
-        marginVertical: 10
+        paddingLeft: 20,
+        paddingVertical: 15,
+        backgroundColor: '#F1F1FA'
     },
     topText: {
         fontSize: 15,

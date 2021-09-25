@@ -12,17 +12,18 @@ import {} from '@react-native-community/slider';
 import PlayButton from './Audio Player/PlayButton';
 import SoundPlayer from 'react-native-sound-player'
 
-const AudioPlayer = () => {
+const AudioPlayer = ({partAudio}) => {
     const [isAlreadyPlay, setisAlreadyPlay] = useState(false);
     const [inprogress, setInprogress] = useState(false);
 
     useEffect(() => {
-
-    }, [])
+        SoundPlayer.stop();
+        setisAlreadyPlay(false)
+    }, [partAudio])
 
     const playSong = () => {
         try {
-            SoundPlayer.playUrl('https://tailieuvnu.com/wp-content/uploads/2021/01/20/T1-PART1.mp3?_=1')
+            SoundPlayer.playUrl(partAudio)
         } catch (e) {
             alert('Cannot play the file')
             console.log('cannot play the song file', e)

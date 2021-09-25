@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import {SafeAreaView ,StyleSheet, View, Image, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, KeyboardAvoidingView, StatusBar, FlatList, SectionList, ActivityIndicator, Alert} from 'react-native';
-import CourseCard from '../components/CourseCard';
+import {SafeAreaView ,StyleSheet, View, Text, TouchableOpacity, Dimensions, ScrollView, TextInput, StatusBar, ActivityIndicator, Alert} from 'react-native';
 import SectionDetail from '../components/SectionDetail';
 import SectionName from '../components/SectionName';
-// import { ScrollView, TextInput } from 'react-native-gesture-handler';
 import V2ReturnTestScreen from '../components/V2ReturnTestScreen';
 import AudioPlayer from '../components/AudioPlayer';
-import data from '../data/tests.json'
-import { Item } from 'react-native-paper/lib/typescript/components/List/List';
 import FlatButton from '../components/FlatButton';
-import getTestsData from '../services/getTestsData';
-import firestore from '@react-native-firebase/firestore';
 import getPartsData from '../services/getPartsData';
 import getQuestionsData from '../services/getQuestionsData';
-import getAnswerData from '../services/getAnswerData';
 
 
 const AudioplaylistScreen = ({navigation, route}) => {
@@ -23,7 +16,14 @@ const AudioplaylistScreen = ({navigation, route}) => {
   const [brgColor1, setBgrdColor1] = useState('white');
   const [brgColor2, setBgrdColor2] = useState('#F1F1FA');
   const [note, setNote] = useState();
+  const [partAudio, setPartAudio] = useState('')
+  const [showAudio, setShowAudio] = useState(false)
 
+  useEffect(() => {
+    if(partAudio !== ''){
+      setShowAudio(true)
+    }
+  }, [partAudio])
 
   const CourseContentView = () => {
     setCourseContentView(true);
@@ -46,7 +46,13 @@ const AudioplaylistScreen = ({navigation, route}) => {
         navigation={navigation}
       />
       <View style={styles.video}>
-        <AudioPlayer/>
+        {
+          showAudio?(
+            <AudioPlayer partAudio={partAudio}/>
+          ):(
+            <Text>Click to the Part to get Audio file!</Text>
+          )
+        }
       </View>
       <View style={styles.bodyContainer}>
         <View style={styles.tabBtn}>
@@ -57,19 +63,19 @@ const AudioplaylistScreen = ({navigation, route}) => {
           </TouchableOpacity>
           <TouchableOpacity>
             <View style={[styles.tabMenu, {backgroundColor: brgColor2}]}>
-              <Text style={[styles.tabBtnText, {color: textColor2}]} onPress={() => console.log(route.params)}>Your Notebook</Text>
+              <Text style={[styles.tabBtnText, {color: textColor2}]} onPress={YourNotebookView}>Your Notebook</Text>
             </View>
           </TouchableOpacity>
         </View>
 
-        {ShowCourseContentView? <CourseContentDetail test_id={route.params.test_id}/> : <YourNotebookDetail note={note} setNote={setNote}/>}
+        {ShowCourseContentView? <CourseContentDetail test_id={route.params.test_id} setPartAudio={setPartAudio}/> : <YourNotebookDetail note={note} setNote={setNote}/>}
 
       </View>
     </SafeAreaView>
   );
 };
 
-const CourseContentDetail = ({test_id}) => {
+const CourseContentDetail = ({test_id, setPartAudio}) => {
   const [parts, setParts] = useState([]);
   const [questions, setQuestions] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -92,9 +98,6 @@ const CourseContentDetail = ({test_id}) => {
     getQuestionsDataFromPart()
   }, [parts])
 
-  useEffect(() => {
-    console.log(userAnswers)
-  }, [userAnswers])
 
   const SubmitExam = () => {
     var point = 0;
@@ -119,15 +122,15 @@ const CourseContentDetail = ({test_id}) => {
             parts.map((part, index) =>{
               return(
                 <View key={index}>
+                {/* <View style={styles.lineStyle}/> */}
                 <SectionName
                   section={index + 1}
                   topic={part.title}
+                  onPress={() => setPartAudio(part.url)}
                 />
+                  {/* <View style={styles.lineStyle}/> */}
                   {
                     questions.filter(q => q.part_id === part.part_id).map((question, index) => {
-                      // console.log(question.question)
-                      // const answer = answers.filter(a => a.question_id === question.question_id)
-                      // console.log(answers)
                       return(
                         <SectionDetail
                         key={index}
@@ -140,6 +143,7 @@ const CourseContentDetail = ({test_id}) => {
                       )
                     })
                   }
+                  {/* <View style={styles.lineStyle}/> */}
                 </View>
               )
             })

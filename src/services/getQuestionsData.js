@@ -1,4 +1,3 @@
-import firestore from '@react-native-firebase/firestore';
 import { useEffect } from 'react';
 import axios from "axios";
 

@@ -30,7 +30,7 @@ const TestScreen = ({navigation}) => {
           icon='book'
           color='green'
         />
-        <ChooseSkill
+        {/* <ChooseSkill
           skill='Writing'
           navigation={navigation}
           screen='Result'
@@ -43,7 +43,7 @@ const TestScreen = ({navigation}) => {
           screen='Quizz'
           icon='puzzle'
           color='#ff9000'
-        />
+        /> */}
       </View>
     </SafeAreaView>
   );
