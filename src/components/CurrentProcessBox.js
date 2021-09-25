@@ -35,7 +35,7 @@ const CurrentProcessBox = ({photoURL}) => {
 
 const styles = StyleSheet.create({
     viewBox: {
-        height: 100,
+        height: 120,
         width: Dimensions.get('window').width/14*11,
         backgroundColor: '#F5F5F5',
         alignItems: 'center',
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         position: 'absolute',
         borderRadius: 15,
-        marginTop: -50
+        marginTop: -60
     },
     userName: {
         color: 'white',
