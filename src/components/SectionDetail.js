@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     },
     bottomText: {
         fontSize: 12,
-        color: 'gray'
+        color: 'gray',
     }
 })
 
