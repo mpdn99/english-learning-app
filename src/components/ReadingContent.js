@@ -23,7 +23,7 @@ const ReadingContent = ({value, content, SubmitExam}) => {
                         width: 120,
                         height: 40,
                         marginTop: 10,
-                        marginHorizontal: 70
+                        marginHorizontal: 80
                     }}
                     onPress={SubmitExam}
                 >
