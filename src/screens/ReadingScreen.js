@@ -1,5 +1,5 @@
 import React from 'react';
-import {SafeAreaView ,StyleSheet, View, Text, Dimensions, ScrollView, ActivityIndicator} from 'react-native';
+import {SafeAreaView ,StyleSheet, View, Text, Dimensions, ScrollView, ActivityIndicator, Alert} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import ReturnTestScreen from '../components/ReturnTestScreen';
 import LinearGradient from 'react-native-linear-gradient';
@@ -68,6 +68,20 @@ const ReadingScreen = ({navigation, route}) => {
   //   console.log(parts)
   // }, [parts])
 
+  const SubmitExam = () => {
+    var point = 0;
+    userAnswers.map((ua) => {
+      point = point + ua.point
+    })
+    return(
+      Alert.alert('Total score: '+ (point/35).toFixed(1), 
+      `
+      Correct answers: ${point}
+      Wrong answers: ${35-point}
+      ` )
+    )
+  }
+
   return (
     <SafeAreaView style={styles.screenContainer}>
       <View style={styles.bodyContainer}>
@@ -83,6 +97,7 @@ const ReadingScreen = ({navigation, route}) => {
             <ReadingContent
               value={value}
               content={content}
+              SubmitExam={SubmitExam}
             />
         )}
 

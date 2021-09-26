@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Button } from "react-native-paper";
 
 
-const ReadingContent = ({value, content}) => {
+const ReadingContent = ({value, content, SubmitExam}) => {
 
     return (
         <SafeAreaView style={{flex: 1}}>
@@ -25,6 +25,7 @@ const ReadingContent = ({value, content}) => {
                         marginTop: 10,
                         marginHorizontal: 70
                     }}
+                    onPress={SubmitExam}
                 >
                     <Text style={{color: 'white'}}>Submit</Text>
                 </Button>
