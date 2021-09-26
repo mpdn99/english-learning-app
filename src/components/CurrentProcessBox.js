@@ -41,7 +41,7 @@ const CurrentProcessBox = ({photoURL}) => {
 const styles = StyleSheet.create({
     viewBox: {
         height: 120,
-        width: Dimensions.get('window').width/14*11,
+        width: Dimensions.get('window').width/14*12,
         backgroundColor: '#F5F5F5',
         alignItems: 'center',
         justifyContent: 'center',

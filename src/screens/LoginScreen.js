@@ -124,7 +124,6 @@ const LoginScreen = ({navigation}) => {
                         color='#FF8181'
                         pressed='GG'
                     />
-                    <View style={{width: Dimensions.get('window').width*1/50}}></View>
                     <FlatButton
                         title='Sign in with FACEBOOK'
                         // color='blue'
@@ -201,7 +200,7 @@ const styles = StyleSheet.create ({
         justifyContent: 'space-between',
         flexDirection: 'row',
         marginTop: 20,
-        marginHorizontal: -20
+        marginHorizontal: -30
     },
 });
 
