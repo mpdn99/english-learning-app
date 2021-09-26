@@ -1,28 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Alert, Modal, StyleSheet, Text, Pressable, View, Dimensions } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import getQuestionsData from "../services/getQuestionsData";
+import SectionDetail from "./SectionDetail";
 
-const AnswerCardReading = ({value}) => {
+const AnswerCardReading = ({value, part_id, setUserAnswers, userAnswers}) => {
+  const  [questions, setQuestions] = useState([])
+  
+  // useEffect(() => {
+  //   const getQuestionsDataFromPart = async () => {
+  //     await getQuestionsData(part_id, setQuestions)
+  //   }
+  //   getQuestionsDataFromPart()
+  //   return () => {
+  //     setQuestions([])
+  //   }
+  // }, [])
+
+  useEffect(() => {
+    const getQuestionsDataFromPart = async () => {
+      await getQuestionsData(part_id, setQuestions)
+    }
+    getQuestionsDataFromPart()
+    return () => {
+      setQuestions([])
+    }
+    // console.log(part_id)
+  }, [part_id])
 
   const [modalVisible, setModalVisible] = useState(false);
-  
-  const Questions = () => {
-    if (value == 1) {
-      return (
-        <View>
-          <Text>Hehe, here is the set of question 1</Text>
-        </View>
-      )
-    } else if (value == 2) {
-      return (
-        <View>
-          <Text>And here is question 2</Text>
-        </View>
-      )
-    }
-    return null;
-  }
 
   return (
     <SafeAreaView>
@@ -39,12 +47,23 @@ const AnswerCardReading = ({value}) => {
                 <View style={styles.centeredView}>
                 
                 <View style={styles.modalView}>
-
-
-                <Questions/>
-
-
-                  <View style={{flexDirection: "column-reverse", flex: 1, alignItems: "center"}}>
+                <ScrollView style={{marginBottom: 25}}>
+                  {
+                    questions.filter(q => q.part_id === part_id).map((question, index) => {
+                      return(
+                        <SectionDetail
+                        key={index}
+                        section={index + 1}
+                        topic={question.question}
+                        question={question.question_id}
+                        userAnswers={userAnswers}
+                        setUserAnswers={setUserAnswers}
+                      />
+                      )
+                    })
+                  }
+                </ScrollView>
+                  <View style={{flexDirection: "column-reverse", flex: 1, alignItems: "center", position: 'absolute', bottom: 20}}>
                     <Pressable
                       style={[styles.buttonClose]}
                       onPress={() => setModalVisible(!modalVisible)}

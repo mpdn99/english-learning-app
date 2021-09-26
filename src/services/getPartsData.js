@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getPartsData = (test_id, setParts) => {
+const getPartsData = (test_id, setParts, setLoading) => {
   const url = `https://bunny2-istech.herokuapp.com/test/${test_id}`
   return axios.get(url, {
       headers: {
@@ -12,6 +12,7 @@ const getPartsData = (test_id, setParts) => {
       const result = response.data;
       // console.log(result)
       setParts(result);
+      setLoading(false);
   })
   .catch((error) => {
       console.error(error)

@@ -18,6 +18,34 @@ const AudioplaylistScreen = ({navigation, route}) => {
   const [note, setNote] = useState();
   const [partAudio, setPartAudio] = useState('')
   const [showAudio, setShowAudio] = useState(false)
+  const [parts, setParts] = useState([]);
+  const [questions, setQuestions] = useState([]);
+  const [userAnswers, setUserAnswers] = useState([])
+  const [loading, setLoading] = useState(true);
+
+  const test_id = route.params.test_id;
+
+  useEffect(() => {
+    const fetchApi = async () => {
+      await getPartsData(test_id, setParts, setLoading)
+    }
+    fetchApi()
+    return () => {
+      setParts([])
+    }
+  }, [])
+
+  useEffect(() => {
+    const getQuestionsDataFromPart = async () => {
+      parts.map( async (part) => {
+        await getQuestionsData(part.part_id, setQuestions)
+      })
+    }
+    getQuestionsDataFromPart()
+    return () => {
+      setQuestions([])
+    }
+  }, [parts])
 
   useEffect(() => {
     if(partAudio !== ''){
@@ -68,36 +96,27 @@ const AudioplaylistScreen = ({navigation, route}) => {
           </TouchableOpacity>
         </View>
 
-        {ShowCourseContentView? <CourseContentDetail test_id={route.params.test_id} setPartAudio={setPartAudio}/> : <YourNotebookDetail note={note} setNote={setNote}/>}
+        {ShowCourseContentView? 
+        <CourseContentDetail
+          test_id={route.params.test_id}
+          setPartAudio={setPartAudio}
+          parts={parts}
+          setParts={setParts}
+          questions={questions}
+          setQuestions={setQuestions}
+          userAnswers={userAnswers}
+          setUserAnswers={setUserAnswers}
+          loading={loading}
+          />
+          : 
+         <YourNotebookDetail note={note} setNote={setNote}/>}
 
       </View>
     </SafeAreaView>
   );
 };
 
-const CourseContentDetail = ({test_id, setPartAudio}) => {
-  const [parts, setParts] = useState([]);
-  const [questions, setQuestions] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [userAnswers, setUserAnswers] = useState([])
-
-  useEffect(() => {
-    const fetchApi = async () => {
-      await getPartsData(test_id, setParts)
-    }
-    fetchApi()
-    setLoading(false)
-  }, [])
-
-  useEffect(() => {
-    const getQuestionsDataFromPart = async () => {
-      parts.map( async (part) => {
-        await getQuestionsData(part.part_id, setQuestions)
-      })
-    }
-    getQuestionsDataFromPart()
-  }, [parts])
-
+const CourseContentDetail = ({test_id, setPartAudio, parts, setParts, questions, setQuestions, userAnswers, setUserAnswers, loading}) => {
 
   const SubmitExam = () => {
     var point = 0;

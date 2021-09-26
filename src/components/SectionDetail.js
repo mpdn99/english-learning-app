@@ -1,34 +1,33 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, TouchableOpacity, Image, Alert } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import AnswerCard from "./AnswerCard";
 import AnswerRadioButton from "./AnswerRadioButton";
 import getAnswerData from "../services/getAnswerData";
 import { RadioButton } from "react-native-paper";
 
 const SectionDetail = ({section, topic, question, userAnswers, setUserAnswers}) => {
     const[done, setDone] = useState(null);
-    const[show, setShow] = useState(false);
+    const[show, setShow] = useState(true);
     const [answers, setAnswers] = useState([])
     const [value, setValue] = useState();
 
     useEffect(() => {
         getAnswerData(question, setAnswers)
+        return () => {
+            setAnswers([])
+            console.log(userAnswers.find(ua => ua.question_id === question).answer_id);
+        }
     }, [])
 
     useEffect(() => {
         if(value!=null){
             setDone('Completed')
-            // const point = answers.map((a) => {
-            //     if(a.answer_id === value) return console.log('true')
-            // })
             const userAnswer = [{
                 question_id: question,
                 answer_id: value,
                 point: answers.find(a => a.answer_id === value).is_correct
             }]
             const userAnswerExist = userAnswers.some(ua => ua.question_id === question);
-            // console.log(userAnswers)
             if(userAnswerExist){
                 setUserAnswers(userAnswers.map((ua => {
                     if(ua.question_id !== question) return ua

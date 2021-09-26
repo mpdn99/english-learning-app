@@ -22,13 +22,15 @@ const TestScreen = ({navigation}) => {
           screen='ListTest'
           icon='face'
           color='blue'
+          params = {1}
         />
         <ChooseSkill
           skill='Reading Skill'
           navigation={navigation}
-          screen='Reading'
+          screen='ListTest'
           icon='book'
           color='green'
+          params={2}
         />
         {/* <ChooseSkill
           skill='Writing'

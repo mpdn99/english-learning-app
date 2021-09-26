@@ -4,15 +4,22 @@ import ChooseSkill from '../components/ChooseSkill';
 import HeaderBar from '../components/HeaderBar';
 import getTestsData from '../services/getTestsData';
 
-const ListTestScreen = ({navigation}) => {
+const ListTestScreen = ({navigation, route}) => {
     const [tests, setTests] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [screen, setScreen] = useState()
     useEffect(() => {
-        getTestsData(setTests, setLoading)
+        getTestsData(setTests, setLoading, route.params)
+        if(route.params === 1){
+            setScreen('Listening')
+        }
+        if(route.params === 2){
+            setScreen('Reading')
+        }
+        return () => {
+            setScreen()
+        }
     }, []);
-    // if (loading) {
-    //     return <ActivityIndicator style={styles.loading}/>;
-    //   }
     return (
         <SafeAreaView style={styles.screenContainer}>
             <HeaderBar title="Tests" navigation={navigation}/>
@@ -37,7 +44,7 @@ const ListTestScreen = ({navigation}) => {
                                     <ChooseSkill
                                     skill={item.title}
                                     navigation={navigation}
-                                    screen='Listening'
+                                    screen={screen}
                                     icon='face'
                                     color='blue'
                                     params={{test_id: item.test_id}}
@@ -47,7 +54,6 @@ const ListTestScreen = ({navigation}) => {
                     />
                 )
             }
-            {/* <Button title="Test" onPress={fetchApi}/> */}
             </View>
           </SafeAreaView>
 
