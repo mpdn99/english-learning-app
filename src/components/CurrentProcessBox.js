@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, Dimensions, Alert} from 'react-native';
+import {View, Text, StyleSheet, Image, Dimensions, Alert, ImageBackground} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import FlatButton from './FlatButton'
 import {Button} from 'react-native-paper';
@@ -7,6 +7,11 @@ import {Button} from 'react-native-paper';
 const CurrentProcessBox = ({photoURL}) => {
     return (
         <View style={styles.viewBox}>
+            <Image
+                source={require('../images/Caro.png')}
+                resizeMode='cover'
+                style={[styles.viewBox]}
+            />
             <View style={styles.Unknown3}>
                 <Image
                     style={styles.Unknown2}

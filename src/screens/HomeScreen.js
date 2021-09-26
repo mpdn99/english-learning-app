@@ -28,7 +28,7 @@ const HomeScreen = ({navigation}) => {
           source={require('../images/DontKnowWhereToStart.png')}
           resizeMode='cover'
           style={{
-            marginTop: 20,
+            bottom: -20,
             alignSelf: 'center'
           }}
         />
