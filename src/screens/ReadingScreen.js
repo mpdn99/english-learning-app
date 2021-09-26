@@ -8,6 +8,7 @@ import AnswerCardReading from '../components/AnswerCardReading';
 import { useState, useEffect } from 'react';
 import ReadingContent from '../components/ReadingContent';
 import getPartsData from '../services/getPartsData';
+import { Button } from 'react-native-paper';
 
 const ReadingScreen = ({navigation, route}) => {
 
@@ -70,19 +71,19 @@ const ReadingScreen = ({navigation, route}) => {
   return (
     <SafeAreaView style={styles.screenContainer}>
       <View style={styles.bodyContainer}>
-        <ReturnTestScreen title='Science with Craft'
+        <ReturnTestScreen title='Reading Test'
                           iconColor='black'
                           navigation={navigation}/>
-
+        
         {/* Put topics and contents in the ReadingContent component*/}
         {loading?(
           <ActivityIndicator style={{flex: 1}} />
         ):
         (
-          <ReadingContent
-            value={value}
-            content={content}
-          />
+            <ReadingContent
+              value={value}
+              content={content}
+            />
         )}
 
         <LinearGradient
