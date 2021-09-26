@@ -90,7 +90,7 @@ const ReadingScreen = ({navigation, route}) => {
           colors={['white', '#D2DFFF']}
           style={styles.bottomMenu}>
           <DropDownPicker
-            placeholder='CHAPTERS'
+            placeholder='Passages'
             style={styles.chooseChap}
             showArrowIcon={false}
             open={open}
