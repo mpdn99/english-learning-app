@@ -47,22 +47,24 @@ const AnswerCardReading = ({value, part_id, setUserAnswers, userAnswers}) => {
                 <View style={styles.centeredView}>
                 
                 <View style={styles.modalView}>
-                <ScrollView style={{marginBottom: 25}}>
-                  {
-                    questions.filter(q => q.part_id === part_id).map((question, index) => {
-                      return(
-                        <SectionDetail
-                        key={index}
-                        section={index + 1}
-                        topic={question.question}
-                        question={question.question_id}
-                        userAnswers={userAnswers}
-                        setUserAnswers={setUserAnswers}
-                      />
-                      )
-                    })
-                  }
-                </ScrollView>
+                  <ScrollView 
+                    style={{marginBottom: 25, flex: 1, width: Dimensions.get('window').width}}
+                  >
+                    {
+                      questions.filter(q => q.part_id === part_id).map((question, index) => {
+                        return(
+                          <SectionDetail
+                          key={index}
+                          section={index + 1}
+                          topic={question.question}
+                          question={question.question_id}
+                          userAnswers={userAnswers}
+                          setUserAnswers={setUserAnswers}
+                        />
+                        )
+                      })
+                    }
+                  </ScrollView>
                   <View style={{flexDirection: "column-reverse", flex: 1, alignItems: "center", position: 'absolute', bottom: 20}}>
                     <Pressable
                       style={[styles.buttonClose]}
@@ -113,6 +115,7 @@ const styles = StyleSheet.create({
     marginLeft: -30,
   },
   buttonOpen: {
+    marginRight: -30,
     backgroundColor: '#D2DFFF',
     borderColor: 'blue',
     borderWidth: 1,

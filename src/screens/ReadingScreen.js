@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   bottomMenu: {
     paddingVertical: 30,
-    paddingHorizontal: 100,
+    paddingHorizontal: 80,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     bottom: 0
   },
   chooseChap: {
+    marginLeft: -30,
     width: 150,
     height: 70,
     paddingHorizontal: 35,
